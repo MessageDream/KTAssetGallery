@@ -1,0 +1,472 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B23C89001BECC51800006C88 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C88C61BECC51800006C88 /* AppDelegate.m */; };
+		B23C89011BECC51800006C88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B23C88C71BECC51800006C88 /* Assets.xcassets */; };
+		B23C89021BECC51800006C88 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B23C88C81BECC51800006C88 /* LaunchScreen.storyboard */; };
+		B23C89031BECC51800006C88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B23C88CA1BECC51800006C88 /* Main.storyboard */; };
+		B23C89041BECC51800006C88 /* UIViewController+KTAssertGallery.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C88CE1BECC51800006C88 /* UIViewController+KTAssertGallery.m */; };
+		B23C89051BECC51800006C88 /* KTAlbumsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C88D21BECC51800006C88 /* KTAlbumsController.m */; };
+		B23C89061BECC51800006C88 /* KTImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C88D41BECC51800006C88 /* KTImagePickerController.m */; };
+		B23C89071BECC51800006C88 /* KTPhotosController.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C88D61BECC51800006C88 /* KTPhotosController.m */; };
+		B23C89081BECC51800006C88 /* KTALAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C88D91BECC51800006C88 /* KTALAlbum.m */; };
+		B23C89091BECC51800006C88 /* KTALAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C88DB1BECC51800006C88 /* KTALAsset.m */; };
+		B23C890A1BECC51800006C88 /* KTAlbumsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C88DD1BECC51800006C88 /* KTAlbumsDataSource.m */; };
+		B23C890B1BECC51800006C88 /* KTAssetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C88DF1BECC51800006C88 /* KTAssetManager.m */; };
+		B23C890C1BECC51800006C88 /* KTAssetsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C88E11BECC51800006C88 /* KTAssetsModel.m */; };
+		B23C890D1BECC51800006C88 /* KTFetchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C88E31BECC51800006C88 /* KTFetchResult.m */; };
+		B23C890E1BECC51800006C88 /* KTImagePickerSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C88E51BECC51800006C88 /* KTImagePickerSettings.m */; };
+		B23C890F1BECC51800006C88 /* KTPHAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C88E71BECC51800006C88 /* KTPHAlbum.m */; };
+		B23C89101BECC51800006C88 /* KTPHAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C88E91BECC51800006C88 /* KTPHAsset.m */; };
+		B23C89111BECC51800006C88 /* KTPhotosDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C88EB1BECC51800006C88 /* KTPhotosDataSource.m */; };
+		B23C89121BECC51800006C88 /* KTAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C88F51BECC51800006C88 /* KTAlbumCell.m */; };
+		B23C89131BECC51800006C88 /* KTAlbumsContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C88F71BECC51800006C88 /* KTAlbumsContainerView.m */; };
+		B23C89141BECC51800006C88 /* KTPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C88F91BECC51800006C88 /* KTPhotoCell.m */; };
+		B23C89151BECC51800006C88 /* KTSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C88FB1BECC51800006C88 /* KTSelectionView.m */; };
+		B23C89161BECC51800006C88 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B23C88FC1BECC51800006C88 /* Info.plist */; };
+		B23C89171BECC51800006C88 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C88FD1BECC51800006C88 /* main.m */; };
+		B23C89181BECC51800006C88 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C88FF1BECC51800006C88 /* ViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B23C88C51BECC51800006C88 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B23C88C61BECC51800006C88 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B23C88C71BECC51800006C88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B23C88C91BECC51800006C88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B23C88CB1BECC51800006C88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B23C88CD1BECC51800006C88 /* UIViewController+KTAssertGallery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+KTAssertGallery.h"; sourceTree = "<group>"; };
+		B23C88CE1BECC51800006C88 /* UIViewController+KTAssertGallery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+KTAssertGallery.m"; sourceTree = "<group>"; };
+		B23C88D11BECC51800006C88 /* KTAlbumsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTAlbumsController.h; sourceTree = "<group>"; };
+		B23C88D21BECC51800006C88 /* KTAlbumsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTAlbumsController.m; sourceTree = "<group>"; };
+		B23C88D31BECC51800006C88 /* KTImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTImagePickerController.h; sourceTree = "<group>"; };
+		B23C88D41BECC51800006C88 /* KTImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTImagePickerController.m; sourceTree = "<group>"; };
+		B23C88D51BECC51800006C88 /* KTPhotosController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTPhotosController.h; sourceTree = "<group>"; };
+		B23C88D61BECC51800006C88 /* KTPhotosController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTPhotosController.m; sourceTree = "<group>"; };
+		B23C88D81BECC51800006C88 /* KTALAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTALAlbum.h; sourceTree = "<group>"; };
+		B23C88D91BECC51800006C88 /* KTALAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTALAlbum.m; sourceTree = "<group>"; };
+		B23C88DA1BECC51800006C88 /* KTALAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTALAsset.h; sourceTree = "<group>"; };
+		B23C88DB1BECC51800006C88 /* KTALAsset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTALAsset.m; sourceTree = "<group>"; };
+		B23C88DC1BECC51800006C88 /* KTAlbumsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTAlbumsDataSource.h; sourceTree = "<group>"; };
+		B23C88DD1BECC51800006C88 /* KTAlbumsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTAlbumsDataSource.m; sourceTree = "<group>"; };
+		B23C88DE1BECC51800006C88 /* KTAssetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTAssetManager.h; sourceTree = "<group>"; };
+		B23C88DF1BECC51800006C88 /* KTAssetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTAssetManager.m; sourceTree = "<group>"; };
+		B23C88E01BECC51800006C88 /* KTAssetsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTAssetsModel.h; sourceTree = "<group>"; };
+		B23C88E11BECC51800006C88 /* KTAssetsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTAssetsModel.m; sourceTree = "<group>"; };
+		B23C88E21BECC51800006C88 /* KTFetchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTFetchResult.h; sourceTree = "<group>"; };
+		B23C88E31BECC51800006C88 /* KTFetchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTFetchResult.m; sourceTree = "<group>"; };
+		B23C88E41BECC51800006C88 /* KTImagePickerSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTImagePickerSettings.h; sourceTree = "<group>"; };
+		B23C88E51BECC51800006C88 /* KTImagePickerSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTImagePickerSettings.m; sourceTree = "<group>"; };
+		B23C88E61BECC51800006C88 /* KTPHAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTPHAlbum.h; sourceTree = "<group>"; };
+		B23C88E71BECC51800006C88 /* KTPHAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTPHAlbum.m; sourceTree = "<group>"; };
+		B23C88E81BECC51800006C88 /* KTPHAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTPHAsset.h; sourceTree = "<group>"; };
+		B23C88E91BECC51800006C88 /* KTPHAsset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTPHAsset.m; sourceTree = "<group>"; };
+		B23C88EA1BECC51800006C88 /* KTPhotosDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTPhotosDataSource.h; sourceTree = "<group>"; };
+		B23C88EB1BECC51800006C88 /* KTPhotosDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTPhotosDataSource.m; sourceTree = "<group>"; };
+		B23C88ED1BECC51800006C88 /* KTAlbumProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTAlbumProtocol.h; sourceTree = "<group>"; };
+		B23C88EE1BECC51800006C88 /* KTAssetProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTAssetProtocol.h; sourceTree = "<group>"; };
+		B23C88EF1BECC51800006C88 /* KTAssetsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTAssetsDelegate.h; sourceTree = "<group>"; };
+		B23C88F01BECC51800006C88 /* KTIndexPathProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTIndexPathProtocol.h; sourceTree = "<group>"; };
+		B23C88F11BECC51800006C88 /* KTSelectableProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTSelectableProtocol.h; sourceTree = "<group>"; };
+		B23C88F21BECC51800006C88 /* KTSettingsProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTSettingsProtocol.h; sourceTree = "<group>"; };
+		B23C88F41BECC51800006C88 /* KTAlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTAlbumCell.h; sourceTree = "<group>"; };
+		B23C88F51BECC51800006C88 /* KTAlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTAlbumCell.m; sourceTree = "<group>"; };
+		B23C88F61BECC51800006C88 /* KTAlbumsContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTAlbumsContainerView.h; sourceTree = "<group>"; };
+		B23C88F71BECC51800006C88 /* KTAlbumsContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTAlbumsContainerView.m; sourceTree = "<group>"; };
+		B23C88F81BECC51800006C88 /* KTPhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTPhotoCell.h; sourceTree = "<group>"; };
+		B23C88F91BECC51800006C88 /* KTPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTPhotoCell.m; sourceTree = "<group>"; };
+		B23C88FA1BECC51800006C88 /* KTSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTSelectionView.h; sourceTree = "<group>"; };
+		B23C88FB1BECC51800006C88 /* KTSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTSelectionView.m; sourceTree = "<group>"; };
+		B23C88FC1BECC51800006C88 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B23C88FD1BECC51800006C88 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B23C88FE1BECC51800006C88 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		B23C88FF1BECC51800006C88 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		B27FAB2B1BE74A1B00DA76F7 /* KTAssetGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KTAssetGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B27FAB281BE74A1B00DA76F7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B23C88C41BECC51800006C88 /* KTAssetGallery */ = {
+			isa = PBXGroup;
+			children = (
+				B23C88C51BECC51800006C88 /* AppDelegate.h */,
+				B23C88C61BECC51800006C88 /* AppDelegate.m */,
+				B23C88C71BECC51800006C88 /* Assets.xcassets */,
+				B23C88C81BECC51800006C88 /* LaunchScreen.storyboard */,
+				B23C88CA1BECC51800006C88 /* Main.storyboard */,
+				B23C88CC1BECC51800006C88 /* Category */,
+				B23C88CF1BECC51800006C88 /* classes */,
+				B23C88FC1BECC51800006C88 /* Info.plist */,
+				B23C88FD1BECC51800006C88 /* main.m */,
+				B23C88FE1BECC51800006C88 /* ViewController.h */,
+				B23C88FF1BECC51800006C88 /* ViewController.m */,
+			);
+			path = KTAssetGallery;
+			sourceTree = "<group>";
+		};
+		B23C88CC1BECC51800006C88 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				B23C88CD1BECC51800006C88 /* UIViewController+KTAssertGallery.h */,
+				B23C88CE1BECC51800006C88 /* UIViewController+KTAssertGallery.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		B23C88CF1BECC51800006C88 /* classes */ = {
+			isa = PBXGroup;
+			children = (
+				B23C88D01BECC51800006C88 /* Controller */,
+				B23C88D71BECC51800006C88 /* Model */,
+				B23C88EC1BECC51800006C88 /* Protocol */,
+				B23C88F31BECC51800006C88 /* View */,
+			);
+			path = classes;
+			sourceTree = "<group>";
+		};
+		B23C88D01BECC51800006C88 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B23C88D11BECC51800006C88 /* KTAlbumsController.h */,
+				B23C88D21BECC51800006C88 /* KTAlbumsController.m */,
+				B23C88D31BECC51800006C88 /* KTImagePickerController.h */,
+				B23C88D41BECC51800006C88 /* KTImagePickerController.m */,
+				B23C88D51BECC51800006C88 /* KTPhotosController.h */,
+				B23C88D61BECC51800006C88 /* KTPhotosController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B23C88D71BECC51800006C88 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B23C88D81BECC51800006C88 /* KTALAlbum.h */,
+				B23C88D91BECC51800006C88 /* KTALAlbum.m */,
+				B23C88DA1BECC51800006C88 /* KTALAsset.h */,
+				B23C88DB1BECC51800006C88 /* KTALAsset.m */,
+				B23C88DC1BECC51800006C88 /* KTAlbumsDataSource.h */,
+				B23C88DD1BECC51800006C88 /* KTAlbumsDataSource.m */,
+				B23C88DE1BECC51800006C88 /* KTAssetManager.h */,
+				B23C88DF1BECC51800006C88 /* KTAssetManager.m */,
+				B23C88E01BECC51800006C88 /* KTAssetsModel.h */,
+				B23C88E11BECC51800006C88 /* KTAssetsModel.m */,
+				B23C88E21BECC51800006C88 /* KTFetchResult.h */,
+				B23C88E31BECC51800006C88 /* KTFetchResult.m */,
+				B23C88E41BECC51800006C88 /* KTImagePickerSettings.h */,
+				B23C88E51BECC51800006C88 /* KTImagePickerSettings.m */,
+				B23C88E61BECC51800006C88 /* KTPHAlbum.h */,
+				B23C88E71BECC51800006C88 /* KTPHAlbum.m */,
+				B23C88E81BECC51800006C88 /* KTPHAsset.h */,
+				B23C88E91BECC51800006C88 /* KTPHAsset.m */,
+				B23C88EA1BECC51800006C88 /* KTPhotosDataSource.h */,
+				B23C88EB1BECC51800006C88 /* KTPhotosDataSource.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B23C88EC1BECC51800006C88 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				B23C88ED1BECC51800006C88 /* KTAlbumProtocol.h */,
+				B23C88EE1BECC51800006C88 /* KTAssetProtocol.h */,
+				B23C88EF1BECC51800006C88 /* KTAssetsDelegate.h */,
+				B23C88F01BECC51800006C88 /* KTIndexPathProtocol.h */,
+				B23C88F11BECC51800006C88 /* KTSelectableProtocol.h */,
+				B23C88F21BECC51800006C88 /* KTSettingsProtocol.h */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		B23C88F31BECC51800006C88 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B23C88F41BECC51800006C88 /* KTAlbumCell.h */,
+				B23C88F51BECC51800006C88 /* KTAlbumCell.m */,
+				B23C88F61BECC51800006C88 /* KTAlbumsContainerView.h */,
+				B23C88F71BECC51800006C88 /* KTAlbumsContainerView.m */,
+				B23C88F81BECC51800006C88 /* KTPhotoCell.h */,
+				B23C88F91BECC51800006C88 /* KTPhotoCell.m */,
+				B23C88FA1BECC51800006C88 /* KTSelectionView.h */,
+				B23C88FB1BECC51800006C88 /* KTSelectionView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B27FAB221BE74A1B00DA76F7 = {
+			isa = PBXGroup;
+			children = (
+				B23C88C41BECC51800006C88 /* KTAssetGallery */,
+				B27FAB2C1BE74A1B00DA76F7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B27FAB2C1BE74A1B00DA76F7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B27FAB2B1BE74A1B00DA76F7 /* KTAssetGallery.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B27FAB2A1BE74A1B00DA76F7 /* KTAssetGallery */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B27FAB421BE74A1B00DA76F7 /* Build configuration list for PBXNativeTarget "KTAssetGallery" */;
+			buildPhases = (
+				B27FAB271BE74A1B00DA76F7 /* Sources */,
+				B27FAB281BE74A1B00DA76F7 /* Frameworks */,
+				B27FAB291BE74A1B00DA76F7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KTAssetGallery;
+			productName = KTAssertGallery;
+			productReference = B27FAB2B1BE74A1B00DA76F7 /* KTAssetGallery.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B27FAB231BE74A1B00DA76F7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = jayden;
+				TargetAttributes = {
+					B27FAB2A1BE74A1B00DA76F7 = {
+						CreatedOnToolsVersion = 7.1;
+					};
+				};
+			};
+			buildConfigurationList = B27FAB261BE74A1B00DA76F7 /* Build configuration list for PBXProject "KTAssetGallery" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B27FAB221BE74A1B00DA76F7;
+			productRefGroup = B27FAB2C1BE74A1B00DA76F7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B27FAB2A1BE74A1B00DA76F7 /* KTAssetGallery */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B27FAB291BE74A1B00DA76F7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B23C89161BECC51800006C88 /* Info.plist in Resources */,
+				B23C89031BECC51800006C88 /* Main.storyboard in Resources */,
+				B23C89011BECC51800006C88 /* Assets.xcassets in Resources */,
+				B23C89021BECC51800006C88 /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B27FAB271BE74A1B00DA76F7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B23C89181BECC51800006C88 /* ViewController.m in Sources */,
+				B23C89061BECC51800006C88 /* KTImagePickerController.m in Sources */,
+				B23C890C1BECC51800006C88 /* KTAssetsModel.m in Sources */,
+				B23C89051BECC51800006C88 /* KTAlbumsController.m in Sources */,
+				B23C89141BECC51800006C88 /* KTPhotoCell.m in Sources */,
+				B23C890E1BECC51800006C88 /* KTImagePickerSettings.m in Sources */,
+				B23C890D1BECC51800006C88 /* KTFetchResult.m in Sources */,
+				B23C89041BECC51800006C88 /* UIViewController+KTAssertGallery.m in Sources */,
+				B23C89071BECC51800006C88 /* KTPhotosController.m in Sources */,
+				B23C89101BECC51800006C88 /* KTPHAsset.m in Sources */,
+				B23C89151BECC51800006C88 /* KTSelectionView.m in Sources */,
+				B23C89171BECC51800006C88 /* main.m in Sources */,
+				B23C89121BECC51800006C88 /* KTAlbumCell.m in Sources */,
+				B23C89091BECC51800006C88 /* KTALAsset.m in Sources */,
+				B23C89131BECC51800006C88 /* KTAlbumsContainerView.m in Sources */,
+				B23C890A1BECC51800006C88 /* KTAlbumsDataSource.m in Sources */,
+				B23C89001BECC51800006C88 /* AppDelegate.m in Sources */,
+				B23C890B1BECC51800006C88 /* KTAssetManager.m in Sources */,
+				B23C89081BECC51800006C88 /* KTALAlbum.m in Sources */,
+				B23C89111BECC51800006C88 /* KTPhotosDataSource.m in Sources */,
+				B23C890F1BECC51800006C88 /* KTPHAlbum.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B23C88C81BECC51800006C88 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B23C88C91BECC51800006C88 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		B23C88CA1BECC51800006C88 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B23C88CB1BECC51800006C88 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B27FAB401BE74A1B00DA76F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B27FAB411BE74A1B00DA76F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B27FAB431BE74A1B00DA76F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "$(SRCROOT)/KTAssetGallery/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.buxuxiao.jayden.KTAssertGallery;
+				PRODUCT_NAME = KTAssetGallery;
+			};
+			name = Debug;
+		};
+		B27FAB441BE74A1B00DA76F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "$(SRCROOT)/KTAssetGallery/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.buxuxiao.jayden.KTAssertGallery;
+				PRODUCT_NAME = KTAssetGallery;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B27FAB261BE74A1B00DA76F7 /* Build configuration list for PBXProject "KTAssetGallery" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B27FAB401BE74A1B00DA76F7 /* Debug */,
+				B27FAB411BE74A1B00DA76F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B27FAB421BE74A1B00DA76F7 /* Build configuration list for PBXNativeTarget "KTAssetGallery" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B27FAB431BE74A1B00DA76F7 /* Debug */,
+				B27FAB441BE74A1B00DA76F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B27FAB231BE74A1B00DA76F7 /* Project object */;
+}
