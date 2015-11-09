@@ -11,10 +11,12 @@
 #import "KTSettingsProtocol.h"
 
 @interface KTPhotosController : UIViewController
-@property(weak,nonatomic)id<KTSettingsProtocol> settings;
+@property(strong,nonatomic)id<KTSettingsProtocol> settings;
+@property(assign,nonatomic)KTAssetMediaType mediaType;
 @property(strong,nonatomic)NSArray<id<KTAssetProtocol>> *lastTimeSelections;
 @property(copy,nonatomic)void (^selectionBlock)(id<KTAssetProtocol> asset);
 @property(copy,nonatomic)void (^deSelectionBlock)(id<KTAssetProtocol> asset);
+@property(copy,nonatomic)void (^tapToPreviewBlock)(id<KTAssetProtocol> asset);
 @property(copy,nonatomic)void (^cancelBlock)(NSArray<id<KTAssetProtocol>> *assets);
 @property(copy,nonatomic)void (^finishBlock)(NSArray<id<KTAssetProtocol>> *assets);
 @end

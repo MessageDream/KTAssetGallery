@@ -11,7 +11,7 @@
 @implementation KTImagePickerSettings
 -(instancetype)init{
     if (self = [super init]) {
-        _maxNumberOfSelections = 10;
+        _maxNumberOfSelections = 9;
         _selectionString = @"✓";
         _selectionFillColor = [[UIView alloc] init].tintColor;
         _selectionStrokeColor = [UIColor whiteColor];
@@ -25,14 +25,9 @@
         [_selectionTextAttributes setObject:paragraphStyle forKey:NSParagraphStyleAttributeName];
         [_selectionTextAttributes setObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
         
-        _cellsPerRow = ^ NSInteger (UIInterfaceOrientationMask orientation){
-            switch (orientation) {
-                case UIInterfaceOrientationMaskLandscape:
-                    return 7;
-                default:
-                    return 5;
-                    break;
-            }
+        _cellsPerRow = ^ NSInteger (UIDeviceOrientation orientation){
+            return UIDeviceOrientationIsLandscape(orientation)? 7:5;
+            
         };
     }
     return self;

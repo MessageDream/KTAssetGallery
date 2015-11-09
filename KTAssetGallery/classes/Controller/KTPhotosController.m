@@ -11,12 +11,10 @@
 #import "KTPhotoCell.h"
 #import "KTPhotosDataSource.h"
 #import "KTAlbumsController.h"
+#import "KTImagePickerSettings.h"
+#import "KTPhotoBrowserViewController.h"
 
-static NSInteger  imageCountForLandscape = 7; //横版每行显示数
-static NSInteger  imageCountForPortrait = 5;  //竖版每行显示数
 static CGFloat imageCellSpace = 1.f;
-static NSInteger maxSelectionCount = 6;
-
 @interface KTPhotosController()<UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,KTPhotoCellDelegate>
 {
     void (^_loadContentBlock)(KTPhotoCell *cell, id<KTAssetProtocol> asset, BOOL isSelected, NSIndexPath *indexPath);
@@ -24,6 +22,7 @@ static NSInteger maxSelectionCount = 6;
 @property(weak,nonatomic)UICollectionView *collectionView;
 @property(strong,nonatomic)KTPhotosDataSource *dataSource;
 @property(strong,nonatomic)KTAlbumsController *albumController;
+
 @end
 
 @implementation KTPhotosController
@@ -61,6 +60,10 @@ static NSInteger maxSelectionCount = 6;
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"cancel" style:UIBarButtonItemStyleDone target:self action:@selector(cancel_click:)];
     
+    if (!self.settings) {
+        self.settings = [[KTImagePickerSettings alloc] init];
+    }
+    
     __weak __typeof(self) weakSelf = self;
     _loadContentBlock = ^(KTPhotoCell *cell, id<KTAssetProtocol> asset, BOOL isSelected, NSIndexPath *indexPath) {
         __strong __typeof(weakSelf) strongSelf = weakSelf;
@@ -78,7 +81,7 @@ static NSInteger maxSelectionCount = 6;
     
     self.collectionView.delegate = self;
     
-    _albumController = [[KTAlbumsController alloc] initWithAlbumChangedBlock:^(id<KTAlbumProtocol> album) {
+    _albumController = [[KTAlbumsController alloc] initWithMediaType:self.mediaType albumChangedBlock:^(id<KTAlbumProtocol> album) {
         __strong __typeof(weakSelf) strongSelf = weakSelf;
         [albumButton setTitle:album.title forState:UIControlStateNormal];
         
@@ -123,11 +126,11 @@ static NSInteger maxSelectionCount = 6;
 - (CGSize)collectionView:(UICollectionView *)collectionView
                   layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+   
+    NSInteger cellCountPerRow = self.settings.cellsPerRow([UIDevice currentDevice].orientation);
     
-    BOOL isLandscape = UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation);
-    
-    float spaceInSum = imageCellSpace * ((isLandscape? imageCountForLandscape : imageCountForPortrait) - 1) * 2;
-    float cellWidth = (CGRectGetWidth(collectionView.bounds) - spaceInSum)/(isLandscape? imageCountForLandscape : imageCountForPortrait);
+    float spaceInSum = imageCellSpace * (cellCountPerRow - 1) * 2;
+    float cellWidth = (CGRectGetWidth(collectionView.bounds) - spaceInSum)/cellCountPerRow;
     
     return CGSizeMake(cellWidth, cellWidth);
 }
@@ -144,7 +147,7 @@ static NSInteger maxSelectionCount = 6;
 
 #pragma mark-- UICollectionViewDelegate
 - (BOOL)photoCellShouldSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-   return [self.dataSource selectionCount] < maxSelectionCount;
+   return [self.dataSource selectionCount] < self.settings.maxNumberOfSelections;
 }
 
 - (BOOL)photoCellShouldDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -182,21 +185,22 @@ static NSInteger maxSelectionCount = 6;
  
 }
 
-//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-//    [self.dataSource selectObjectAtIndexPath:indexPath];
-////    KTPhotoCell *cell = (KTPhotoCell *)[collectionView cellForItemAtIndexPath:indexPath];
-////    NSInteger count = [self.dataSource selectionCount];
-//    
-////TODO 更新完成按钮;
-//    
-//    if (self.selectionBlock) {
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    id<KTAssetProtocol> asset = [self.dataSource valueOfIndexPath:indexPath];
+//    if (self.tapToPreviewBlock) {
 //        dispatch_async(dispatch_get_global_queue(0, 0), ^{
-//            self.selectionBlock([self.dataSource valueOfIndexPath:indexPath]);
+//            self.tapToPreviewBlock(asset);
 //        });
+//    }else{
+        //默认预览
+        
+        if (asset.mediaType == KTAssetMediaTypeImage) {
+            KTPhotoBrowserViewController *vc = [[KTPhotoBrowserViewController alloc] init];
+            [self presentViewController:vc animated:YES completion:nil];
+        }
 //    }
-//    
-//}
-//
+}
+
 
 - (void)syncSelectionInDataSource:(KTPhotosDataSource *)dataSource withCollectionView:(UICollectionView *)collectionView {
     NSArray<NSIndexPath *> *indexPaths = [dataSource selectedIndexPaths];

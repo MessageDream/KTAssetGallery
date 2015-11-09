@@ -18,9 +18,11 @@
         
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[tableView]-8-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(tableView)]];
         
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-8-[tableView]-8-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(tableView)]];
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-16-[tableView]-8-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(tableView)]];
+        
         [tableView setShowsVerticalScrollIndicator:NO];
         _tableView = tableView;
+         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return self;
 }

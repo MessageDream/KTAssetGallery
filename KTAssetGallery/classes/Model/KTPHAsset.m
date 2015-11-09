@@ -24,6 +24,10 @@
     return self;
 }
 
+-(KTAssetMediaType)mediaType{
+    return (KTAssetMediaType)self.asset.mediaType;
+}
+
 -(void)setIndexPath:(NSIndexPath *)indexPath{
     _indexPath = indexPath;
 }
@@ -93,6 +97,17 @@
         if ([info objectForKey:@"PHImageFileURLKey"]) {
             NSURL *path = [info objectForKey:@"PHImageFileURLKey"];
             callback([path absoluteString]);
+        }
+    }];
+}
+
+- (void)baseInfo:(void (^)(NSString *fileName, KTAssetOrientation orientation, NSURL *url))callback{
+    [[PHCachingImageManager defaultManager] requestImageDataForAsset:self.asset options:nil resultHandler:^(NSData *imageData, NSString *dataUTI, UIImageOrientation orientation, NSDictionary *info) {
+        if ([info objectForKey:@"PHImageFileURLKey"]) {
+            NSURL *path = [info objectForKey:@"PHImageFileURLKey"];
+            NSString *fileName = [path absoluteString];
+            NSURL *url = [path absoluteURL];
+            callback(fileName,(KTAssetOrientation)orientation,url);
         }
     }];
 }

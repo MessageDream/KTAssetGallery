@@ -14,6 +14,7 @@
 
 @interface KTAlbumsDataSource : NSObject<UITableViewDataSource, KTSelectableProtocol>
 @property(weak,nonatomic)id<KTAssetsDelegate> delegate;
+-(instancetype)initWithMediaType:(KTAssetMediaType)mediaType;
 - (void)setTableView:(UITableView *)tableView cellClass:(Class)cellClass loadContentBlock:(void (^)(id cell, id<KTAlbumProtocol> album))block;
 - (id<KTAlbumProtocol>)valueOfIndexPath:(NSIndexPath *)indexPath;
 @end

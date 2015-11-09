@@ -19,7 +19,7 @@
 @end
 
 @implementation KTPHAlbum
--(instancetype)initWithPHAssetCollection:(PHAssetCollection *)collection{
+-(instancetype)initWithAssetCollection:(id)collection mediaType:(KTAssetMediaType)mediaType{
     if (self = [super init]) {
         self.collection = collection;
         PHFetchOptions *fetchOptions = [[PHFetchOptions alloc] init];
@@ -27,7 +27,7 @@
                                          [NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO]
                                          ];
         
-        fetchOptions.predicate = [NSPredicate predicateWithFormat:@"mediaType = %d",PHAssetMediaTypeImage];
+        fetchOptions.predicate = [NSPredicate predicateWithFormat:@"mediaType = %d",mediaType];
         self.fetchOptions = fetchOptions;
     }
     return self;

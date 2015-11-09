@@ -16,6 +16,7 @@
 
 @property(copy,nonatomic)void (^selectionBlock)(id<KTAssetProtocol> asset);
 @property(copy,nonatomic)void (^deSelectionBlock)(id<KTAssetProtocol> asset);
+@property(copy,nonatomic)void (^tapToPreviewBlock)(id<KTAssetProtocol> asset);
 @property(copy,nonatomic)void (^cancelBlock)(NSArray<id<KTAssetProtocol>> *assets);
 @property(copy,nonatomic)void (^finishBlock)(NSArray<id<KTAssetProtocol>> *assets);
 @end
@@ -25,6 +26,7 @@
 + (KTImagePickerController *)imagePickerControllerWithHasSelected:(NSArray<id<KTAssetProtocol>> *) hasSelected
                                                        whenSelect:(void (^)(id<KTAssetProtocol> asset)) selectionBlock
                                                          deSelect:(void (^)(id<KTAssetProtocol> asset)) deSelectionBlock
+                                                     tapToPreview:(void (^)(id<KTAssetProtocol> asset)) tapToPreviewBlock
                                                            cancel:(void (^)(NSArray<id<KTAssetProtocol>> *assets)) cancelBlock
                                                            finish:(void (^)(NSArray<id<KTAssetProtocol>> *assets))finishBlock{
     
@@ -32,6 +34,7 @@
     vc.photoController.lastTimeSelections = hasSelected;
     vc.selectionBlock = selectionBlock;
     vc.deSelectionBlock = deSelectionBlock;
+    vc.tapToPreviewBlock = tapToPreviewBlock;
     vc.cancelBlock = cancelBlock;
     vc.finishBlock = finishBlock;
     return vc;
@@ -84,6 +87,14 @@
     return _photoController;
 }
 
+- (KTAssetMediaType)mediaType{
+    return self.photoController.mediaType;
+}
+
+-(void)setMediaType:(KTAssetMediaType)mediaType{
+    self.photoController.mediaType = mediaType;
+}
+
 -(void)setMaxNumberOfSelections:(NSInteger)maxNumberOfSelections{
     self.settings.maxNumberOfSelections = maxNumberOfSelections;
 }
@@ -132,11 +143,11 @@
     return self.settings.selectionTextAttributes;
 }
 
--(void)setCellsPerRow:(NSInteger (^)(UIInterfaceOrientationMask))cellsPerRow{
+-(void)setCellsPerRow:(NSInteger (^)(UIDeviceOrientation))cellsPerRow{
      self.settings.cellsPerRow = cellsPerRow;
 }
 
--(NSInteger (^)(UIInterfaceOrientationMask))cellsPerRow{
+-(NSInteger (^)(UIDeviceOrientation))cellsPerRow{
      return self.settings.cellsPerRow;
 }
 
@@ -154,6 +165,14 @@
 
 -(void (^)(id<KTAssetProtocol>))deSelectionBlock{
     return  self.deSelectionBlock;
+}
+
+-(void)setTapToPreviewBlock:(void (^)(id<KTAssetProtocol>))tapToPreviewBlock{
+    self.photoController.tapToPreviewBlock = tapToPreviewBlock;
+}
+
+-(void (^)(id<KTAssetProtocol>))tapToPreviewBlock{
+    return self.photoController.tapToPreviewBlock;
 }
 
 -(void)setCancelBlock:(void (^)(NSArray<id<KTAssetProtocol>> *))cancelBlock{

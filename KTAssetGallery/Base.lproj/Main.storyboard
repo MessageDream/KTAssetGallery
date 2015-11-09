@@ -25,6 +25,14 @@
                                     <action selector="photos_click:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ynb-Ms-x14"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nCk-5a-RKO">
+                                <rect key="frame" x="224" y="290" width="74" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Videos"/>
+                                <connections>
+                                    <action selector="videos_click:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eEn-wT-R8V"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

@@ -10,8 +10,6 @@
 #import "KTAlbumProtocol.h"
 #import "KTIndexPathProtocol.h"
 
-@class PHAssetCollection;
-
 @interface KTPHAlbum : NSObject<KTAlbumProtocol,KTIndexPathProtocol>
--(instancetype)initWithPHAssetCollection:(PHAssetCollection *)collection;
+-(instancetype)initWithAssetCollection:(id)collection mediaType:(KTAssetMediaType)mediaType;
 @end

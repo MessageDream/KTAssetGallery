@@ -26,30 +26,39 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)photos_click:(id)sender {
-    //  KTImagePickerController *vc = [KTImagePickerController imagePickerControllerWithHasSelected:self.assets whenSelect:^(id<KTAssetProtocol> asset) {
-    //      NSLog(@"%@",asset);
-    //  } deSelect:^(id<KTAssetProtocol> asset) {
-    //      NSLog(@"%@",asset);
-    //  } cancel:^(NSArray<id<KTAssetProtocol>> *assets) {
-    //      NSLog(@"%@",assets);
-    //  } finish:^(NSArray<id<KTAssetProtocol>> *assets) {
-    //      self.assets = assets;
-    //       NSLog(@"%@",assets);
-    //      [self dismissViewControllerAnimated:YES completion:nil];
-    //      self.vc = nil;
-    //  }];
-    //    self.vc = vc;
-    //    [self presentViewController:vc animated:YES completion:nil];
+
+- (IBAction)videos_click:(id)sender {
     
-    [self kt_imagePickerCustomShow:^(UIViewController *vc) {
+    [self kt_assetPickerCustomShow:^(UIViewController *vc) {
         [self presentViewController:vc animated:YES completion:nil];
     } hide:^(UIViewController *vc) {
         [self dismissViewControllerAnimated:YES completion:nil];
-    } settings:nil hasSelected:self.assets whenSelect:^(id<KTAssetProtocol> asset) {
+    } mediaType:KTAssetMediaTypeVideo settings:nil hasSelected:self.assets whenSelect:^(id<KTAssetProtocol> asset) {
+        NSLog(@"%@",asset);
+    } deSelect:^(id<KTAssetProtocol> asset) {
+        NSLog(@"%@",asset);
+    } tapToPreview:^(id<KTAssetProtocol> asset){
+       NSLog(@"%@",asset);
+    } cancel:^(NSArray<id<KTAssetProtocol>> *assets) {
+        NSLog(@"%@",assets);
+    } finish:^(NSArray<id<KTAssetProtocol>> *assets) {
+        self.assets = assets;
+        NSLog(@"%@",assets);
+    }];
+}
+
+- (IBAction)photos_click:(id)sender {
+    
+    [self kt_assetPickerCustomShow:^(UIViewController *vc) {
+        [self presentViewController:vc animated:YES completion:nil];
+    } hide:^(UIViewController *vc) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } mediaType:KTAssetMediaTypeImage settings:nil hasSelected:self.assets whenSelect:^(id<KTAssetProtocol> asset) {
         
         NSLog(@"%@",asset);
     } deSelect:^(id<KTAssetProtocol> asset) {
+        NSLog(@"%@",asset);
+    } tapToPreview:^(id<KTAssetProtocol> asset){
         NSLog(@"%@",asset);
     } cancel:^(NSArray<id<KTAssetProtocol>> *assets) {
         NSLog(@"%@",assets);

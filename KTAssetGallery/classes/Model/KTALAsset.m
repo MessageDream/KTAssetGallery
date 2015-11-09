@@ -24,6 +24,16 @@
     return self;
 }
 
+-(KTAssetMediaType)mediaType{
+    NSString *type = [self.asset valueForProperty:ALAssetPropertyType];
+    if ([type isEqualToString:ALAssetTypePhoto]) {
+        return KTAssetMediaTypeImage;
+    }else if([type isEqualToString:ALAssetTypeVideo]){
+        return KTAssetMediaTypeVideo;
+    }else{
+        return KTAssetMediaTypeUnknown;
+    }
+}
 
 -(void)setIndexPath:(NSIndexPath *)indexPath{
     _indexPath = indexPath;
@@ -71,5 +81,9 @@
 
 - (void)filename:(void (^)(NSString *fileName))callback{
     callback([self.asset.defaultRepresentation filename]);
+}
+
+- (void)baseInfo:(void (^)(NSString *fileName, KTAssetOrientation orientation, NSURL *url))callback{
+    callback([self.asset.defaultRepresentation filename],(KTAssetOrientation)[self.asset valueForProperty:ALAssetPropertyOrientation],[self.asset.defaultRepresentation url]);
 }
 @end

@@ -24,9 +24,16 @@
         self.contentView.translatesAutoresizingMaskIntoConstraints = NO;
         
         
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[imageContainer(==84)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(imageContainer)]];
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[imageContainer(==79)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(imageContainer)]];
         
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-8-[imageContainer(==84)]-8-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(imageContainer)]];
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-8-[imageContainer(==79)]-8-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(imageContainer)]];
+        
+//        [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:imageContainer attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0.0]];
+        
+//        [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:imageContainer attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:0.5 constant:79]];
+        
+//         [imageContainer addConstraint:[NSLayoutConstraint constraintWithItem:imageContainer attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:imageContainer attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0.0]];
+        
        
         UIImageView *tView = [[UIImageView alloc] init];
         [imageContainer addSubview:tView];
@@ -36,9 +43,13 @@
         
         [imageContainer addConstraint:[NSLayoutConstraint constraintWithItem:_thirdImageView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:imageContainer attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0.0]];
         
-        [imageContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_thirdImageView(==79)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_thirdImageView)]];
+        [imageContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_thirdImageView]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_thirdImageView)]];
         
-        [imageContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_thirdImageView(==79)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_thirdImageView)]];
+        [imageContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_thirdImageView]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_thirdImageView)]];
+        
+        [imageContainer addConstraint:[NSLayoutConstraint constraintWithItem:_thirdImageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:imageContainer attribute:NSLayoutAttributeHeight multiplier:1.0 constant:-5.0]];
+        
+        [imageContainer addConstraint:[NSLayoutConstraint constraintWithItem:_thirdImageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:imageContainer attribute:NSLayoutAttributeWidth multiplier:1.0 constant:-5.0]];
         
         UIImageView *sView = [[UIImageView alloc] init];
         [imageContainer addSubview:sView];
@@ -48,9 +59,13 @@
         
         [imageContainer addConstraint:[NSLayoutConstraint constraintWithItem:_secondImageView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:imageContainer attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0.0]];
         
-        [imageContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_secondImageView(==79)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_secondImageView)]];
+        [imageContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_secondImageView]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_secondImageView)]];
         
-        [imageContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_secondImageView(==79)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_secondImageView)]];
+        [imageContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_secondImageView]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_secondImageView)]];
+        
+        [imageContainer addConstraint:[NSLayoutConstraint constraintWithItem:_secondImageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:imageContainer attribute:NSLayoutAttributeHeight multiplier:1.0 constant:-5.0]];
+        
+        [imageContainer addConstraint:[NSLayoutConstraint constraintWithItem:_secondImageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:imageContainer attribute:NSLayoutAttributeWidth multiplier:1.0 constant:-5.0]];
         
         UIImageView *fView = [[UIImageView alloc] init];
         [imageContainer addSubview:fView];
@@ -60,9 +75,13 @@
         
         [imageContainer addConstraint:[NSLayoutConstraint constraintWithItem:_firstImageView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:imageContainer attribute:NSLayoutAttributeRight multiplier:1.0 constant:0.0]];
         
-        [imageContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_firstImageView(==79)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_firstImageView)]];
+        [imageContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[_firstImageView]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_firstImageView)]];
         
-        [imageContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_firstImageView(==79)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_firstImageView)]];
+        [imageContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_firstImageView]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_firstImageView)]];
+        
+        [imageContainer addConstraint:[NSLayoutConstraint constraintWithItem:_firstImageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:imageContainer attribute:NSLayoutAttributeHeight multiplier:1.0 constant:-5.0]];
+        
+        [imageContainer addConstraint:[NSLayoutConstraint constraintWithItem:_firstImageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:imageContainer attribute:NSLayoutAttributeWidth multiplier:1.0 constant:-5.0]];
         
         for (UIImageView *imageView in @[_firstImageView, _secondImageView, _thirdImageView]) {
             imageView.layer.shadowColor = [UIColor whiteColor].CGColor;
@@ -80,9 +99,7 @@
         
         [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:_titleLabel attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeRight multiplier:1.0f constant:-8.0f]];
         
-        [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:_titleLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:imageContainer attribute:NSLayoutAttributeTop multiplier:1.0f constant:8.0f]];
-        
-        [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:_titleLabel attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:imageContainer attribute:NSLayoutAttributeBottom multiplier:1.0f constant:-8.0f]];
+        [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:_titleLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterY multiplier:1.0f constant:8.0f]];
         
     }
     return self;

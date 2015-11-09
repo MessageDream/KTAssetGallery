@@ -12,9 +12,12 @@
 
 typedef void (^KTAlbumEnumerationResultsBlock)(id<KTAssetProtocol> result, NSUInteger index, BOOL *stop);
 
-@protocol KTAlbumProtocol <NSObject>
 
+
+@protocol KTAlbumProtocol <NSObject>
 @required
+-(instancetype)initWithAssetCollection:(id)collection mediaType:(KTAssetMediaType)mediaType;
+
 - (NSString *)title;
 
 - (id)valueForProperty:(NSString *)property;

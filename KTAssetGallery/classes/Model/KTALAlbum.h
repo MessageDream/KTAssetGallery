@@ -10,7 +10,6 @@
 #import "KTAlbumProtocol.h"
 #import "KTIndexPathProtocol.h"
 
-@class ALAssetsGroup;
 @interface KTALAlbum : NSObject<KTAlbumProtocol,KTIndexPathProtocol>
--(instancetype)initWithALAssetsGroup:(ALAssetsGroup *)group;
+-(instancetype)initWithAssetCollection:(id)collection mediaType:(KTAssetMediaType)mediaType;
 @end

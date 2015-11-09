@@ -9,6 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, KTAssetMediaType) {
+    KTAssetMediaTypeUnknown = 0,
+    KTAssetMediaTypeImage   = 1,
+    KTAssetMediaTypeVideo   = 2,
+    KTAssetMediaTypeAudio   = 3
+};
+
 typedef NS_ENUM(NSInteger, KTAssetOrientation) {
     KTAssetOrientationUp ,            // default orientation
     KTAssetOrientationDown ,          // 180 deg rotation
@@ -21,6 +28,7 @@ typedef NS_ENUM(NSInteger, KTAssetOrientation) {
 };
 
 @protocol KTAssetProtocol <NSObject>
+@property(assign,nonatomic,readonly)KTAssetMediaType mediaType;
 @required
 - (void)thumbnail:(void (^)(UIImage *image))imageCallback;
 - (void)aspectRatioThumbnail:(void (^)(UIImage *image))imageCallback;
@@ -41,4 +49,5 @@ typedef NS_ENUM(NSInteger, KTAssetOrientation) {
 
 - (float)scale;
 - (void)filename:(void (^)(NSString *fileName))callback;
+- (void)baseInfo:(void (^)(NSString *fileName, KTAssetOrientation orientation, NSURL *url))callback;
 @end

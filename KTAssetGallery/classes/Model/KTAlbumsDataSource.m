@@ -20,9 +20,9 @@ static NSString *albumCellIdentifier = @"albumCellIdentifier";
 @end
 
 @implementation KTAlbumsDataSource
--(instancetype)init{
+-(instancetype)initWithMediaType:(KTAssetMediaType)mediaType{
     if (self = [super init]) {
-        _assetsModel = [[KTAssetsModel alloc] initWithResults:[KTAssetManager albumFetchResults]];
+        _assetsModel = [[KTAssetsModel alloc] initWithResults:[KTAssetManager albumFetchResultsWithMediaType:mediaType]];
     }
     return self;
 }

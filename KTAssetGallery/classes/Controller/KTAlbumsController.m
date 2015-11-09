@@ -25,10 +25,10 @@
 
 @implementation KTAlbumsController
 
--(instancetype)initWithAlbumChangedBlock:(void (^)(id<KTAlbumProtocol> album))block{
+-(instancetype)initWithMediaType:(KTAssetMediaType)mediaType albumChangedBlock:(void (^)(id<KTAlbumProtocol> album))block{
     if (self = [super init]) {
         _albumChangedBlock = block;
-        self.dataSource = [[KTAlbumsDataSource alloc] init];
+        self.dataSource = [[KTAlbumsDataSource alloc] initWithMediaType:mediaType];
         [self changeSelection:[NSIndexPath indexPathForRow:0 inSection:0]];
     }
     return self;
@@ -48,7 +48,7 @@
     
     [view addConstraint:[NSLayoutConstraint constraintWithItem:containerView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeWidth multiplier:1.0/2 constant:0.0]];
     
-    [view addConstraint:[NSLayoutConstraint constraintWithItem:containerView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeHeight multiplier:1.0/3 constant:0.0]];
+    [view addConstraint:[NSLayoutConstraint constraintWithItem:containerView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeHeight multiplier:1.0/4 constant:0.0]];
     
     self.view = view;
     
@@ -90,7 +90,6 @@
     };
     [self.dataSource setTableView:self.tableView cellClass:[KTAlbumCell class] loadContentBlock:_loadContentBlock];
     self.tableView.delegate = self;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 

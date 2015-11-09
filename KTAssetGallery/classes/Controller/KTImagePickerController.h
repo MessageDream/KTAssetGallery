@@ -12,7 +12,8 @@
 #import "KTAssetManager.h"
 
 @interface KTImagePickerController : UINavigationController<KTSettingsProtocol>
-+ (KTImagePickerController *)imagePickerControllerWithHasSelected:(NSArray<id<KTAssetProtocol>> *) hasSelected whenSelect:(void (^)(id<KTAssetProtocol> asset)) selectionBlock deSelect:(void (^)(id<KTAssetProtocol> asset)) deSelectionBlock cancel:(void (^)(NSArray<id<KTAssetProtocol>> *assets)) cancelBlock finish:(void (^)(NSArray<id<KTAssetProtocol>> *assets))finishBlock;
+@property(assign,nonatomic)KTAssetMediaType mediaType;
++ (KTImagePickerController *)imagePickerControllerWithHasSelected:(NSArray<id<KTAssetProtocol>> *) hasSelected whenSelect:(void (^)(id<KTAssetProtocol> asset)) selectionBlock deSelect:(void (^)(id<KTAssetProtocol> asset)) deSelectionBlock  tapToPreview:(void (^)(id<KTAssetProtocol> asset)) tapToPreviewBlock cancel:(void (^)(NSArray<id<KTAssetProtocol>> *assets)) cancelBlock finish:(void (^)(NSArray<id<KTAssetProtocol>> *assets))finishBlock;
 
 + (void)authorize:(UIViewController *)fromViewController completion:(void (^)())completion;
 @end

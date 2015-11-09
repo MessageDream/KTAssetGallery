@@ -10,6 +10,6 @@
 #import "KTAlbumProtocol.h"
 @class KTFetchResult;
 @interface KTAlbumsController : UIViewController
--(instancetype)initWithAlbumChangedBlock:(void (^)(id<KTAlbumProtocol> album))block;
+-(instancetype)initWithMediaType:(KTAssetMediaType)mediaType albumChangedBlock:(void (^)(id<KTAlbumProtocol> album))block;
 - (void)showInViewController:(UIViewController *)viewController fromView:(UIView *)fromView;
 @end

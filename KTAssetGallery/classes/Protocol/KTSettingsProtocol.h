@@ -15,6 +15,6 @@
 @property(strong,nonatomic)UIColor *selectionStrokeColor;
 @property(strong,nonatomic)UIColor *selectionShadowColor;
 @property(strong,nonatomic)NSMutableDictionary<NSString * ,id> *selectionTextAttributes;
-@property(copy,nonatomic)NSInteger (^cellsPerRow)(UIInterfaceOrientationMask orientation);
+@property(copy,nonatomic)NSInteger (^cellsPerRow)(UIDeviceOrientation orientation);
 @end
 

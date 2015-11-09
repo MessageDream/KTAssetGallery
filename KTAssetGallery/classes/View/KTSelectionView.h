@@ -10,4 +10,5 @@
 
 @interface KTSelectionView : UIView
 @property(assign,nonatomic)BOOL selected;
+@property(copy,nonatomic)NSString *selectionString;
 @end

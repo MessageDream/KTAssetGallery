@@ -10,7 +10,6 @@
 #import "KTImagePickerSettings.h"
 @interface KTSelectionView()
 @property(strong,nonatomic)KTImagePickerSettings *settings;
-@property(copy,nonatomic)NSString *selectionString;
 @end
 
 @implementation KTSelectionView

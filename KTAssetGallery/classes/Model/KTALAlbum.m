@@ -25,6 +25,13 @@
     return self;
 }
 
+-(instancetype)initWithAssetCollection:(id)collection mediaType:(KTAssetMediaType)mediaType{
+    if (self = [super init]) {
+        self.group = collection;
+    }
+    return self;
+}
+
 -(void)setIndexPath:(NSIndexPath *)indexPath{
     _indexPath = indexPath;
 }

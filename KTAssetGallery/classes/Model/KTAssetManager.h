@@ -20,6 +20,6 @@ typedef NS_ENUM(NSInteger, KTAuthorizationStatus) {
 @interface KTAssetManager : NSObject
 + (KTAuthorizationStatus)authorizationStatus;
 + (void)requestAuthorization:(void (^)(KTAuthorizationStatus status))handler;
-+ (NSArray<KTFetchResult *> *)albumFetchResults;
++ (NSArray<KTFetchResult *> *)albumFetchResultsWithMediaType:(KTAssetMediaType)mediaType;
 + (NSArray<KTFetchResult *> *)fetchResultsForAlbum:(id<KTAlbumProtocol>)album;
 @end

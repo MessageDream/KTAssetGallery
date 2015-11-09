@@ -49,23 +49,25 @@
     }
 }
 
-+ (NSArray<KTFetchResult *> *)albumFetchResults{
++ (NSArray<KTFetchResult *> *)albumFetchResultsWithMediaType:(KTAssetMediaType)mediaType{
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < __IPHONE_8_0/10000){
         return nil;
     }else{
         
+        
         PHFetchOptions *option = [[PHFetchOptions alloc] init];
+        
         PHFetchResult<PHAssetCollection *> *cameraCollectionResult = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeSmartAlbumUserLibrary options:option];
         PHFetchResult<PHAssetCollection *> *albumCollectionResult = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeAny options:option];
         
         KTFetchResult *cameraResult = [[KTFetchResult alloc] init];
         NSMutableArray *cameraArray = [[NSMutableArray alloc] init];
         [cameraCollectionResult enumerateObjectsUsingBlock:^(PHAssetCollection * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            KTPHAlbum *album = [[KTPHAlbum alloc] initWithPHAssetCollection:obj];
+            KTPHAlbum *album = [[KTPHAlbum alloc] initWithAssetCollection:obj mediaType:mediaType];
             [album setIndexPath:[NSIndexPath indexPathForRow:idx inSection:0]];
             [cameraArray addObject:album];
         }];
-        [cameraResult addConstructionData: cameraArray];
+        
         
         //        KTFetchResult *albumResult = [[KTFetchResult alloc] init];
         //        albumResult.fetchOriginalData = albumCollectionResult;
@@ -79,11 +81,13 @@
         
         [albumCollectionResult enumerateObjectsUsingBlock:^(PHAssetCollection * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if (obj.estimatedAssetCount) {
-                KTPHAlbum *album = [[KTPHAlbum alloc] initWithPHAssetCollection:obj];
+                KTPHAlbum *album = [[KTPHAlbum alloc] initWithAssetCollection:obj mediaType:mediaType];;
                 [album setIndexPath:[NSIndexPath indexPathForRow:cameraArray.count + idx inSection:0]];
                 [cameraArray addObject:album];
             }
         }];
+        
+       [cameraResult addConstructionData: cameraArray];
         
         return @[cameraResult];
     }

@@ -21,18 +21,21 @@
     return  objc_getAssociatedObject(self, _cmd);
 }
 
--(void)kt_imagePickerCustomShow:(void (^)(UIViewController *vc)) showBlock
+-(void)kt_assetPickerCustomShow:(void (^)(UIViewController *vc)) showBlock
                            hide:(void (^)(UIViewController *vc)) hideBlock
+                      mediaType:(KTAssetMediaType)mediaType
                        settings:(KTImagePickerSettings *)settings
                     hasSelected:(NSArray<id<KTAssetProtocol>> *) hasSelected
                      whenSelect:(void (^)(id<KTAssetProtocol> asset)) selectionBlock
                        deSelect:(void (^)(id<KTAssetProtocol> asset)) deSelectionBlock
+                   tapToPreview:(void (^)(id<KTAssetProtocol> asset)) tapToPreviewBlock
                          cancel:(void (^)(NSArray<id<KTAssetProtocol>> *assets)) cancelBlock
                          finish:(void (^)(NSArray<id<KTAssetProtocol>> *assets)) finishBlock{
     
     KTImagePickerController *vc = [KTImagePickerController imagePickerControllerWithHasSelected:hasSelected
                                                                                      whenSelect:selectionBlock
                                                                                        deSelect:deSelectionBlock
+                                                                                    tapToPreview:tapToPreviewBlock
                                                                                          cancel:^(NSArray<id<KTAssetProtocol>> *assets) {
                                                                                              if (hideBlock) {
                                                                                                  hideBlock(self.kt_vc);
@@ -54,6 +57,7 @@
     
     
     [KTImagePickerController authorize:self completion:^{
+        vc.mediaType = mediaType;
         vc.maxNumberOfSelections = settings.maxNumberOfSelections;
         vc.selectionString = settings.selectionString;
         vc.selectionFillColor = settings.selectionFillColor;
@@ -66,5 +70,49 @@
             showBlock(vc);
         }
     }];
+}
+
+-(void)kt_assetPickerShowWithMediaType:(KTAssetMediaType)mediaType
+                              settings:(KTImagePickerSettings *) settings
+                           hasSelected:(NSArray<id<KTAssetProtocol>> *) hasSelected
+                            whenSelect:(void (^)(id<KTAssetProtocol> asset)) selectionBlock
+                              deSelect:(void (^)(id<KTAssetProtocol> asset)) deSelectionBlock
+                          tapToPreview:(void (^)(id<KTAssetProtocol> asset)) tapToPreviewBlock
+                                cancel:(void (^)(NSArray<id<KTAssetProtocol>> *assets)) cancelBlock
+                                finish:(void (^)(NSArray<id<KTAssetProtocol>> *assets)) finishBlock
+                              complete:(void (^)())complete{
+    KTImagePickerController *vc = [KTImagePickerController imagePickerControllerWithHasSelected:hasSelected
+                                                                                     whenSelect:selectionBlock
+                                                                                       deSelect:deSelectionBlock
+                                                                                    tapToPreview:tapToPreviewBlock
+                                                                                         cancel:^(NSArray<id<KTAssetProtocol>> *assets) {
+                                                                                            
+                                                                                             [self dismissViewControllerAnimated:YES completion:nil];
+                                                                                             
+                                                                                             if (cancelBlock) {
+                                                                                                 cancelBlock(assets);
+                                                                                             }
+                                                                                         } finish:^(NSArray<id<KTAssetProtocol>> *assets) {
+                                                                                              [self dismissViewControllerAnimated:YES completion:nil];
+                                                                                             
+                                                                                             if (finishBlock) {
+                                                                                                 finishBlock(assets);
+                                                                                             }
+                                                                                         }];
+    
+    
+    [KTImagePickerController authorize:self completion:^{
+        vc.mediaType = mediaType;
+        vc.maxNumberOfSelections = settings.maxNumberOfSelections;
+        vc.selectionString = settings.selectionString;
+        vc.selectionFillColor = settings.selectionFillColor;
+        vc.selectionStrokeColor = settings.selectionStrokeColor;
+        vc.selectionShadowColor = settings.selectionShadowColor;
+        vc.selectionTextAttributes = settings.selectionTextAttributes;
+        vc.cellsPerRow = settings.cellsPerRow;
+        self.kt_vc = vc;
+        [self presentViewController:vc animated:YES completion:complete];
+    }];
+ 
 }
 @end

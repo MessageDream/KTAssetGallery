@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B221729B1BF08117001D54F0 /* KTPhotoBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B221729A1BF08117001D54F0 /* KTPhotoBrowserViewController.m */; };
+		B221729E1BF08E98001D54F0 /* KTPreviewPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = B221729D1BF08E98001D54F0 /* KTPreviewPhotoView.m */; };
 		B23C89001BECC51800006C88 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C88C61BECC51800006C88 /* AppDelegate.m */; };
 		B23C89011BECC51800006C88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B23C88C71BECC51800006C88 /* Assets.xcassets */; };
 		B23C89021BECC51800006C88 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B23C88C81BECC51800006C88 /* LaunchScreen.storyboard */; };
@@ -35,6 +37,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B22172991BF08117001D54F0 /* KTPhotoBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTPhotoBrowserViewController.h; sourceTree = "<group>"; };
+		B221729A1BF08117001D54F0 /* KTPhotoBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTPhotoBrowserViewController.m; sourceTree = "<group>"; };
+		B221729C1BF08E98001D54F0 /* KTPreviewPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTPreviewPhotoView.h; sourceTree = "<group>"; };
+		B221729D1BF08E98001D54F0 /* KTPreviewPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTPreviewPhotoView.m; sourceTree = "<group>"; };
 		B23C88C51BECC51800006C88 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B23C88C61BECC51800006C88 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B23C88C71BECC51800006C88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -147,6 +153,8 @@
 				B23C88D41BECC51800006C88 /* KTImagePickerController.m */,
 				B23C88D51BECC51800006C88 /* KTPhotosController.h */,
 				B23C88D61BECC51800006C88 /* KTPhotosController.m */,
+				B22172991BF08117001D54F0 /* KTPhotoBrowserViewController.h */,
+				B221729A1BF08117001D54F0 /* KTPhotoBrowserViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -202,6 +210,8 @@
 				B23C88F91BECC51800006C88 /* KTPhotoCell.m */,
 				B23C88FA1BECC51800006C88 /* KTSelectionView.h */,
 				B23C88FB1BECC51800006C88 /* KTSelectionView.m */,
+				B221729C1BF08E98001D54F0 /* KTPreviewPhotoView.h */,
+				B221729D1BF08E98001D54F0 /* KTPreviewPhotoView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -300,12 +310,14 @@
 				B23C89141BECC51800006C88 /* KTPhotoCell.m in Sources */,
 				B23C890E1BECC51800006C88 /* KTImagePickerSettings.m in Sources */,
 				B23C890D1BECC51800006C88 /* KTFetchResult.m in Sources */,
+				B221729E1BF08E98001D54F0 /* KTPreviewPhotoView.m in Sources */,
 				B23C89041BECC51800006C88 /* UIViewController+KTAssertGallery.m in Sources */,
 				B23C89071BECC51800006C88 /* KTPhotosController.m in Sources */,
 				B23C89101BECC51800006C88 /* KTPHAsset.m in Sources */,
 				B23C89151BECC51800006C88 /* KTSelectionView.m in Sources */,
 				B23C89171BECC51800006C88 /* main.m in Sources */,
 				B23C89121BECC51800006C88 /* KTAlbumCell.m in Sources */,
+				B221729B1BF08117001D54F0 /* KTPhotoBrowserViewController.m in Sources */,
 				B23C89091BECC51800006C88 /* KTALAsset.m in Sources */,
 				B23C89131BECC51800006C88 /* KTAlbumsContainerView.m in Sources */,
 				B23C890A1BECC51800006C88 /* KTAlbumsDataSource.m in Sources */,
