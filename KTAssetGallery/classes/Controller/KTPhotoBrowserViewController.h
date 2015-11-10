@@ -7,34 +7,34 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KTSelectableProtocol.h"
+#import "KTSettingsProtocol.h"
+
+typedef NS_ENUM(NSInteger,KTPhotoBrowserMode){
+   KTPhotoBrowserModeDefault,
+   KTPhotoBrowserModeAlbum
+};
 
 @protocol KTPhotoBrowserDelegate;
 
 @interface KTPhotoBrowserViewController : UIViewController <UIScrollViewDelegate>
 // 代理
 @property (nonatomic, weak) id<KTPhotoBrowserDelegate> delegate;
-// 所有的图片对象
+@property (strong, nonatomic) id<KTSelectableProtocol> dataSource;
+@property (strong, nonatomic) id<KTSettingsProtocol> settings;
 @property (nonatomic, strong) NSMutableArray * photos;
-// 当前展示的图片索引
 @property (nonatomic, assign) NSUInteger currentPhotoIndex;
-
-@property(nonatomic,assign) BOOL hideHUD;
 
 @property(nonatomic) BOOL savePhotoImage;
 
-
-@property(nonatomic,assign) BOOL hideConfimBtn;
-// 显示
-- (void)show;
-
--(void)albumSelected:(NSInteger)count list:(NSArray *)list;
+-(instancetype)initWithBrowserMode:(KTPhotoBrowserMode)mode;
 @end
 
 @protocol KTPhotoBrowserDelegate <NSObject>
 
--(void)CellPhotoImageReload;
+-(void)cellPhotoImageReload;
 
--(void)NewPostImageReload:(NSInteger)ImageIndex;
+-(void)newPostImageReload:(NSInteger)ImageIndex;
 
 @optional
 // 切换到某一页图片

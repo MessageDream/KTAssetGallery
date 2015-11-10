@@ -148,4 +148,8 @@ static NSString *photoCellIdentifier = @"photoCellIdentifier";
 -(BOOL)isSelectedAtIndexPath:(NSIndexPath *)indexPath{
     return [_assetsModel isSelectedAtIndexPath:indexPath];
 }
+
+-(NSInteger)countOfSection:(NSInteger)section{
+    return [[_assetsModel objectAtIndex:section] count];
+}
 @end

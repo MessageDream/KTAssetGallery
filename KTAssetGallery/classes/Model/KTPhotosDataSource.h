@@ -18,5 +18,4 @@
 @property(weak,nonatomic)id<KTAssetsDelegate> delegate;
 - (instancetype)initWithCollectionView:(UICollectionView *)collectionView cellClass:(Class)cellClass lastTimeSelections:(NSArray<id<KTAssetProtocol>> *)lastTimeSelections loadContentBlock:(void (^)(id cell, id<KTAssetProtocol> asset, BOOL isSelected, NSIndexPath *indexPath))block;
 - (void)fetchResultsForAsset:(id<KTAlbumProtocol>)album;
--(id<KTAssetProtocol>)valueOfIndexPath:(NSIndexPath *)indexPath;
 @end

@@ -7,13 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KTAssetProtocol.h"
 
+@class KTPreviewPhotoView;
 @protocol KTPreviewPhotoViewDelegate <NSObject>
-
-
+- (void)photoViewSingleTap:(KTPreviewPhotoView *)photoView;
+- (void)photoViewDidEndZoom:(KTPreviewPhotoView *)photoView;
+- (void)photoViewImageFinishLoad:(KTPreviewPhotoView *)photoView;
 @end
 
 
-@interface KTPreviewPhotoView : UIImageView
+@interface KTPreviewPhotoView :UIScrollView<UIScrollViewDelegate>
 @property(weak,nonatomic)id<KTPreviewPhotoViewDelegate> photoViewDelegate;
+@property(copy,nonatomic)NSString *photoUrl;
+@property(weak,nonatomic)id<KTAssetProtocol> asset;
 @end

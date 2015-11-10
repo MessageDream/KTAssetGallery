@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B20C8C371BF19B9900DABAAD /* KTReuseableScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = B20C8C361BF19B9900DABAAD /* KTReuseableScrollView.m */; };
+		B20C8C3A1BF19C2200DABAAD /* KTReuseableScrollViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B20C8C391BF19C2200DABAAD /* KTReuseableScrollViewCell.m */; };
+		B20C8C411BF1DF3600DABAAD /* KTPhotoBrowserToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = B20C8C401BF1DF3600DABAAD /* KTPhotoBrowserToolbar.m */; };
+		B20C8C441BF1DFD700DABAAD /* KTPhotoBrowserBottomToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = B20C8C431BF1DFD700DABAAD /* KTPhotoBrowserBottomToolbar.m */; };
 		B221729B1BF08117001D54F0 /* KTPhotoBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B221729A1BF08117001D54F0 /* KTPhotoBrowserViewController.m */; };
 		B221729E1BF08E98001D54F0 /* KTPreviewPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = B221729D1BF08E98001D54F0 /* KTPreviewPhotoView.m */; };
 		B23C89001BECC51800006C88 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C88C61BECC51800006C88 /* AppDelegate.m */; };
@@ -37,6 +41,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B20C8C351BF19B9900DABAAD /* KTReuseableScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTReuseableScrollView.h; sourceTree = "<group>"; };
+		B20C8C361BF19B9900DABAAD /* KTReuseableScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTReuseableScrollView.m; sourceTree = "<group>"; };
+		B20C8C381BF19C2200DABAAD /* KTReuseableScrollViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTReuseableScrollViewCell.h; sourceTree = "<group>"; };
+		B20C8C391BF19C2200DABAAD /* KTReuseableScrollViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTReuseableScrollViewCell.m; sourceTree = "<group>"; };
+		B20C8C3F1BF1DF3600DABAAD /* KTPhotoBrowserToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTPhotoBrowserToolbar.h; sourceTree = "<group>"; };
+		B20C8C401BF1DF3600DABAAD /* KTPhotoBrowserToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTPhotoBrowserToolbar.m; sourceTree = "<group>"; };
+		B20C8C421BF1DFD700DABAAD /* KTPhotoBrowserBottomToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTPhotoBrowserBottomToolbar.h; sourceTree = "<group>"; };
+		B20C8C431BF1DFD700DABAAD /* KTPhotoBrowserBottomToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTPhotoBrowserBottomToolbar.m; sourceTree = "<group>"; };
 		B22172991BF08117001D54F0 /* KTPhotoBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTPhotoBrowserViewController.h; sourceTree = "<group>"; };
 		B221729A1BF08117001D54F0 /* KTPhotoBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTPhotoBrowserViewController.m; sourceTree = "<group>"; };
 		B221729C1BF08E98001D54F0 /* KTPreviewPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTPreviewPhotoView.h; sourceTree = "<group>"; };
@@ -212,6 +224,14 @@
 				B23C88FB1BECC51800006C88 /* KTSelectionView.m */,
 				B221729C1BF08E98001D54F0 /* KTPreviewPhotoView.h */,
 				B221729D1BF08E98001D54F0 /* KTPreviewPhotoView.m */,
+				B20C8C351BF19B9900DABAAD /* KTReuseableScrollView.h */,
+				B20C8C361BF19B9900DABAAD /* KTReuseableScrollView.m */,
+				B20C8C381BF19C2200DABAAD /* KTReuseableScrollViewCell.h */,
+				B20C8C391BF19C2200DABAAD /* KTReuseableScrollViewCell.m */,
+				B20C8C3F1BF1DF3600DABAAD /* KTPhotoBrowserToolbar.h */,
+				B20C8C401BF1DF3600DABAAD /* KTPhotoBrowserToolbar.m */,
+				B20C8C421BF1DFD700DABAAD /* KTPhotoBrowserBottomToolbar.h */,
+				B20C8C431BF1DFD700DABAAD /* KTPhotoBrowserBottomToolbar.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -314,15 +334,19 @@
 				B23C89041BECC51800006C88 /* UIViewController+KTAssertGallery.m in Sources */,
 				B23C89071BECC51800006C88 /* KTPhotosController.m in Sources */,
 				B23C89101BECC51800006C88 /* KTPHAsset.m in Sources */,
+				B20C8C371BF19B9900DABAAD /* KTReuseableScrollView.m in Sources */,
 				B23C89151BECC51800006C88 /* KTSelectionView.m in Sources */,
 				B23C89171BECC51800006C88 /* main.m in Sources */,
 				B23C89121BECC51800006C88 /* KTAlbumCell.m in Sources */,
 				B221729B1BF08117001D54F0 /* KTPhotoBrowserViewController.m in Sources */,
+				B20C8C411BF1DF3600DABAAD /* KTPhotoBrowserToolbar.m in Sources */,
 				B23C89091BECC51800006C88 /* KTALAsset.m in Sources */,
 				B23C89131BECC51800006C88 /* KTAlbumsContainerView.m in Sources */,
 				B23C890A1BECC51800006C88 /* KTAlbumsDataSource.m in Sources */,
+				B20C8C441BF1DFD700DABAAD /* KTPhotoBrowserBottomToolbar.m in Sources */,
 				B23C89001BECC51800006C88 /* AppDelegate.m in Sources */,
 				B23C890B1BECC51800006C88 /* KTAssetManager.m in Sources */,
+				B20C8C3A1BF19C2200DABAAD /* KTReuseableScrollViewCell.m in Sources */,
 				B23C89081BECC51800006C88 /* KTALAlbum.m in Sources */,
 				B23C89111BECC51800006C88 /* KTPhotosDataSource.m in Sources */,
 				B23C890F1BECC51800006C88 /* KTPHAlbum.m in Sources */,

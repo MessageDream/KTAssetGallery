@@ -27,6 +27,11 @@
     [self setNeedsDisplay];
 }
 
+-(void)setSelectionString:(NSString *)selectionString{
+    _selectionString = selectionString;
+    [self setNeedsDisplay];
+}
+
 -(void)drawRect:(CGRect)rect{
     CGContextRef context = UIGraphicsGetCurrentContext();
     

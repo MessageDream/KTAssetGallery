@@ -119,7 +119,6 @@ static CGFloat imageCellSpace = 1.f;
         self.navigationItem.rightBarButtonItem.title = @"done";
         self.navigationItem.rightBarButtonItem.enabled = NO;
     }
-   
 }
 
 #pragma mark-- UICollectionViewDelegateFlowLayout
@@ -156,10 +155,7 @@ static CGFloat imageCellSpace = 1.f;
 
 - (void)photoCellDidSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     [self.dataSource selectObjectAtIndexPath:indexPath];
-    //    KTPhotoCell *cell = (KTPhotoCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    //    NSInteger count = [self.dataSource selectionCount];
     
-    //TODO 更新完成按钮;
     [self updateDoneButton];
     
     if (self.selectionBlock) {
@@ -171,12 +167,8 @@ static CGFloat imageCellSpace = 1.f;
 
 - (void)photoCellDidDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
     [self.dataSource deselectObjectAtIndexPath:indexPath];
-    //TODO 更新完成按钮
     [self updateDoneButton];
     
-//    [self.collectionView reloadItemsAtIndexPaths:[self.dataSource selectedIndexPaths]];
-//    [self syncSelectionInDataSource:self.dataSource withCollectionView:self.collectionView];
-    //TODO 执行不选中Block
     if (self.deSelectionBlock) {
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
             self.deSelectionBlock([self.dataSource valueOfIndexPath:indexPath]);
@@ -195,7 +187,9 @@ static CGFloat imageCellSpace = 1.f;
         //默认预览
         
         if (asset.mediaType == KTAssetMediaTypeImage) {
-            KTPhotoBrowserViewController *vc = [[KTPhotoBrowserViewController alloc] init];
+            KTPhotoBrowserViewController *vc = [[KTPhotoBrowserViewController alloc] initWithBrowserMode:KTPhotoBrowserModeAlbum];
+            vc.dataSource = self.dataSource;
+            vc.settings = self.settings;
             [self presentViewController:vc animated:YES completion:nil];
         }
 //    }

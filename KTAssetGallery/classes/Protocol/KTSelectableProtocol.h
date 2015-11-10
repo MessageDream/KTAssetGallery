@@ -16,5 +16,9 @@
 -(NSArray<NSIndexPath *> *)selectedIndexPaths;
 -(NSArray *)selections;
 -(BOOL)isSelectedAtIndexPath:(NSIndexPath *)indexPath;
+
+@optional
+-(id)valueOfIndexPath:(NSIndexPath *)indexPath;
+-(NSInteger)countOfSection:(NSInteger)section;
 @end
 
