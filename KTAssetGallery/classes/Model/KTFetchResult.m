@@ -9,7 +9,7 @@
 #import "KTFetchResult.h"
 
 @interface KTFetchResult()
-@property(strong,nonatomic)NSMutableArray *constructionData;
+@property(strong,nonatomic)NSArray *constructionData;
 @end
 
 @implementation KTFetchResult
@@ -25,7 +25,7 @@
     return [self.constructionData indexOfObject:obj];
 }
 
--(void)addConstructionData:(NSArray *)data{
-    self.constructionData = [[NSMutableArray alloc] initWithArray:data];
+-(void)setData:(NSArray *)data{
+    self.constructionData = data;
 }
 @end

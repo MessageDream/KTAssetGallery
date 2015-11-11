@@ -79,6 +79,10 @@
     return [self.asset.defaultRepresentation scale];
 }
 
+-(NSTimeInterval)duration{
+    return [[self.asset valueForProperty:ALAssetPropertyDuration] timestamp];
+}
+
 - (void)filename:(void (^)(NSString *fileName))callback{
     callback([self.asset.defaultRepresentation filename]);
 }

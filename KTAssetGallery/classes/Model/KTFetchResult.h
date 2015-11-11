@@ -14,5 +14,5 @@
 @property(assign,nonatomic,readonly)NSInteger count;
 - (id)objectAtIndex:(NSUInteger)index;
 - (NSInteger)indexOfObject:(id)obj;
-- (void)addConstructionData:(NSArray *)data;
+- (void)setData:(NSArray *)data;
 @end

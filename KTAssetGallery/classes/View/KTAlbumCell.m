@@ -105,6 +105,7 @@
     return self;
 }
 
+
 -(void)setFirstImage:(UIImage *)firstImage{
     _firstImage = firstImage;
     _firstImageView.image = firstImage;

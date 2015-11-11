@@ -41,7 +41,7 @@
 }
 
 - (NSString *)title{
-    return nil;
+    return [self.group valueForProperty:ALAssetsGroupPropertyName];;
 }
 
 - (id)valueForProperty:(NSString *)property{

@@ -92,6 +92,10 @@
     return 0.0f;
 }
 
+-(NSTimeInterval)duration{
+    return self.asset.duration;
+}
+
 - (void)filename:(void (^)(NSString *fileName))callback{
     [[PHCachingImageManager defaultManager] requestImageDataForAsset:self.asset options:nil resultHandler:^(NSData *imageData, NSString *dataUTI, UIImageOrientation orientation, NSDictionary *info) {
         if ([info objectForKey:@"PHImageFileURLKey"]) {
@@ -110,5 +114,17 @@
             callback(fileName,(KTAssetOrientation)orientation,url);
         }
     }];
+}
+
+- (void)requestPlayerItemResultHandler:(void (^)(AVPlayerItem *playerItem, NSDictionary *info))resultHandler{
+    
+}
+
+- (void)requestExportSessionExportPreset:(NSString *)exportPreset resultHandler:(void (^)(AVAssetExportSession *exportSession, NSDictionary *info))resultHandler{
+    
+}
+
+- (void)requestAVAssetResultHandler:(void (^)(AVAsset *asset, AVAudioMix *audioMix, NSDictionary *info))resultHandler{
+    
 }
 @end

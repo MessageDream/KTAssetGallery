@@ -59,55 +59,24 @@
 
 -(void)setPhotoUrl:(NSString *)photoUrl{
     _photoUrl = photoUrl;
-    [self showImage];
 }
 
 -(void)setAsset:(id<KTAssetProtocol>)asset{
     _asset = asset;
-    [self showImage];
 }
 - (void)showImage{
-    __weak KTPreviewPhotoView *photoView = self;
-    __weak UIImageView *weakimageView = _imageView;
     _imageView.image = nil;
     self.minimumZoomScale  = 1.0;
     self.maximumZoomScale = 4.0;
-//    switch (0) {
-//        case 0:
-//        {
-//            __weak KTPreviewPhotoView *photoView = self;
-//            __weak UIImageView *weakimageView = _imageView;
-//            _imageView.image = nil;
-//            self.minimumZoomScale  = 1.0;
-//            self.maximumZoomScale = 4.0;
-//            self.contentOffset = CGPointZero;
-//            [self.activityIndicator startAnimating];
-//          //网络
-//        }
-//            break;
-//        case 1:
-//        {
-    
-            [self.activityIndicator startAnimating];
-            dispatch_queue_t q = dispatch_queue_create("ktplay.sdk.community.pickImageQueue", NULL);
-            dispatch_async(q, ^{
-                @autoreleasepool {
-                    [_asset fullScreenImage:^(UIImage *image) {
-                        [self.activityIndicator stopAnimating];
-                        weakimageView.image= image;
-                        [photoView adjustFrame];
-                    }];
-                    
-                }
-            });
-//        }
-//            break;
-//    }
-    
-    [self adjustFrame];
+    [_asset fullScreenImage:^(UIImage *image) {
+        _imageView.image = image;
+        [self adjustFrame];
+    }];
 }
 
-
+-(void)didMoveToWindow{
+    [self showImage];
+}
 #pragma mark 调整frame
 - (void)adjustFrame{
     if (_imageView.image==nil) {
@@ -139,7 +108,7 @@
     //图片原始高度(像素)
     float imgH = size.height;
     
-    float imgW2 =   scale4*imgW;
+    float imgW2 = scale4*imgW;
     //图片的逻辑宽度(加入屏幕scale因素后的像素宽度)
     
     //最终使用的宽度(像素，不能超过ImageView的宽度)
@@ -178,7 +147,6 @@
 
 #pragma mark - UIScrollViewDelegate
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
-    
     return _imageView;
 }
 
@@ -210,8 +178,6 @@
     } completion:^(BOOL finished) {
         
     }];
-    
-    
 }
 
 - (void)handleDoubleTap:(UITapGestureRecognizer *)tap {

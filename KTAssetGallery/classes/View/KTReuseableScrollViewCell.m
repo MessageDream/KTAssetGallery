@@ -17,9 +17,13 @@
     }
     
     [self addSubview:pageView];
+    
+    pageView.translatesAutoresizingMaskIntoConstraints = NO;
+    
 }
 
 - (void)layoutSubviews{
+    [super layoutSubviews];
     UIView *pageView =  self.subviews[0];
     pageView.frame = self.bounds;
 }

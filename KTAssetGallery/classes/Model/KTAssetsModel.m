@@ -15,7 +15,7 @@
 {
     NSMutableArray *_selections;
 }
-@property(strong, nonatomic)NSMutableArray<KTFetchResult *> *results;
+@property(strong, nonatomic)NSArray<KTFetchResult *> *results;
 
 -(NSArray *)indexPathsFromIndexSet:(NSIndexSet *)indexSet inSection:(NSInteger) section;
 @end
@@ -24,9 +24,8 @@
 
 -(instancetype)initWithResults:(NSArray<KTFetchResult *> *)results{
     if (self = [super init]) {
-        self.results = [NSMutableArray arrayWithArray:results];
+        _results = results;
         _selections = [NSMutableArray array];
-//        self.modelType = type;
         if ([[[UIDevice currentDevice] systemVersion] floatValue] < __IPHONE_8_0/10000){
             [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(assetsChangeNotification:) name:ALAssetsLibraryChangedNotification object:nil];
         }else{

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+@class AVPlayerItem,AVAssetExportSession,AVAsset,AVAudioMix;
 
 typedef NS_ENUM(NSInteger, KTAssetMediaType) {
     KTAssetMediaTypeUnknown = 0,
@@ -48,6 +49,13 @@ typedef NS_ENUM(NSInteger, KTAssetOrientation) {
 - (void)orientation:(void (^)(KTAssetOrientation orientation))orientationCallback;
 
 - (float)scale;
+- (NSTimeInterval)duration;
 - (void)filename:(void (^)(NSString *fileName))callback;
 - (void)baseInfo:(void (^)(NSString *fileName, KTAssetOrientation orientation, NSURL *url))callback;
+
+- (void)requestPlayerItemResultHandler:(void (^)(AVPlayerItem *playerItem, NSDictionary *info))resultHandler;
+
+- (void)requestExportSessionExportPreset:(NSString *)exportPreset resultHandler:(void (^)(AVAssetExportSession *exportSession, NSDictionary *info))resultHandler;
+
+- (void)requestAVAssetResultHandler:(void (^)(AVAsset *asset, AVAudioMix *audioMix, NSDictionary *info))resultHandler;
 @end

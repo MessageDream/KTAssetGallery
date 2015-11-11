@@ -179,11 +179,11 @@ static CGFloat imageCellSpace = 1.f;
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     id<KTAssetProtocol> asset = [self.dataSource valueOfIndexPath:indexPath];
-//    if (self.tapToPreviewBlock) {
-//        dispatch_async(dispatch_get_global_queue(0, 0), ^{
-//            self.tapToPreviewBlock(asset);
-//        });
-//    }else{
+    if (self.tapToPreviewBlock && asset.mediaType == KTAssetMediaTypeVideo) {//视频预览
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            self.tapToPreviewBlock(asset);
+        });
+    }else{
         //默认预览
         
         if (asset.mediaType == KTAssetMediaTypeImage) {
@@ -192,7 +192,7 @@ static CGFloat imageCellSpace = 1.f;
             vc.settings = self.settings;
             [self presentViewController:vc animated:YES completion:nil];
         }
-//    }
+    }
 }
 
 
