@@ -73,8 +73,8 @@
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             
             [library enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
-                if ([group numberOfAssets]) {
-                    KTALAlbum *album = [[KTALAlbum alloc] initWithAssetCollection:group mediaType:mediaType];
+                  KTALAlbum *album = [[KTALAlbum alloc] initWithAssetCollection:group mediaType:mediaType];
+                if ([album numberOfAssets]) {
                     [album setIndexPath:[NSIndexPath indexPathForRow:idx inSection:0]];
                     idx++;
                     [cameraArray addObject:album];
@@ -106,8 +106,8 @@
         }];
         
         [albumCollectionResult enumerateObjectsUsingBlock:^(PHAssetCollection * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            if (obj.estimatedAssetCount) {
-                KTPHAlbum *album = [[KTPHAlbum alloc] initWithAssetCollection:obj mediaType:mediaType];;
+            KTPHAlbum *album = [[KTPHAlbum alloc] initWithAssetCollection:obj mediaType:mediaType];
+            if ([album numberOfAssets]) {
                 [album setIndexPath:[NSIndexPath indexPathForRow:cameraArray.count + idx inSection:0]];
                 [cameraArray addObject:album];
             }

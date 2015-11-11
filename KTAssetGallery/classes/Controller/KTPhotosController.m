@@ -189,6 +189,7 @@ static CGFloat imageCellSpace = 1.f;
         if (asset.mediaType == KTAssetMediaTypeImage) {
             KTPhotoBrowserViewController *vc = [[KTPhotoBrowserViewController alloc] initWithBrowserMode:KTPhotoBrowserModeAlbum];
             vc.dataSource = self.dataSource;
+            vc.currentPhotoIndex = indexPath.row;
             vc.settings = self.settings;
             [self presentViewController:vc animated:YES completion:nil];
         }

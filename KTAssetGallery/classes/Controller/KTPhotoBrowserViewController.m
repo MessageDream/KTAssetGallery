@@ -113,6 +113,7 @@ static NSString *reuseIdentifier = @"reuseableCell";
     if (_currentMode == KTPhotoBrowserModeAlbum) {
         [self createBottomToolbar];
     }
+     _photoScrollView.contentOffset = CGPointMake(_currentPhotoIndex * _photoScrollView.frame.size.width, 0);
 }
 
 #pragma mark - KTPhotoBrowserToolbarDelegate
@@ -205,14 +206,6 @@ static NSString *reuseIdentifier = @"reuseableCell";
     _photos = photos;
 }
 
-#pragma mark 设置选中的图片
-- (void)setCurrentPhotoIndex:(NSUInteger)currentPhotoIndex{
-    _currentPhotoIndex = currentPhotoIndex;
-    
-    if ([self isViewLoaded]) {
-        _photoScrollView.contentOffset = CGPointMake(_currentPhotoIndex * _photoScrollView.frame.size.width, 0);
-    }
-}
 
 #pragma mark 显示一个图片view
 - (void)showPhotoViewAtIndex:(int)index{

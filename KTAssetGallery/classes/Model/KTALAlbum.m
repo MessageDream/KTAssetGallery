@@ -18,16 +18,21 @@
 @end
 
 @implementation KTALAlbum
--(instancetype)initWithALAssetsGroup:(ALAssetsGroup *)group{
-    if (self = [super init]) {
-        self.group = group;
-    }
-    return self;
-}
 
 -(instancetype)initWithAssetCollection:(id)collection mediaType:(KTAssetMediaType)mediaType{
     if (self = [super init]) {
         self.group = collection;
+        switch (mediaType) {
+            case KTAssetMediaTypeImage:
+                [self.group setAssetsFilter:[ALAssetsFilter allPhotos]];
+                break;
+            case  KTAssetMediaTypeVideo:
+                [self.group setAssetsFilter:[ALAssetsFilter allVideos]];
+                break;
+            default:
+                [self.group setAssetsFilter:[ALAssetsFilter allAssets]];
+                break;
+        }
     }
     return self;
 }
@@ -58,6 +63,9 @@
 
 - (void)enumerateAssetsUsingBlock:(KTAlbumEnumerationResultsBlock)enumerationBlock{
     [self.group enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
+        if (!result) {
+            return ;
+        }
         KTALAsset *aResult = [[KTALAsset alloc] initWithALAsset:result];
         [aResult setIndexPath:[NSIndexPath indexPathForRow:index inSection:[self indexPath].row]];
         enumerationBlock(aResult,index,stop);
@@ -66,6 +74,9 @@
 
 - (void)enumerateAssetsWithOptions:(NSEnumerationOptions)options usingBlock:(KTAlbumEnumerationResultsBlock)enumerationBlock{
     [self.group enumerateAssetsWithOptions:options usingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
+        if (!result) {
+            return ;
+        }
         KTALAsset *aResult = [[KTALAsset alloc] initWithALAsset:result];
         [aResult setIndexPath:[NSIndexPath indexPathForRow:index inSection:[self indexPath].row]];
         enumerationBlock(aResult,index,stop);
@@ -74,6 +85,9 @@
 
 - (void)enumerateAssetsAtIndexes:(NSIndexSet *)indexSet options:(NSEnumerationOptions)options usingBlock:(KTAlbumEnumerationResultsBlock)enumerationBlock{
     [self.group enumerateAssetsAtIndexes:indexSet options:options usingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
+        if (!result) {
+            return ;
+        }
         KTALAsset *aResult = [[KTALAsset alloc] initWithALAsset:result];
         [aResult setIndexPath:[NSIndexPath indexPathForRow:index inSection:[self indexPath].row]];
         enumerationBlock(aResult,index,stop);
