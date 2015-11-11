@@ -9,6 +9,13 @@
 #import "KTPhotoBrowserBottomToolbar.h"
 #import "KTSelectionView.h"
 
+@interface KTPhotoBrowserBottomToolbar ()
+{
+    BOOL _selected;
+}
+@property (weak, nonatomic) KTSelectionView *selectionView;
+@end
+
 @implementation KTPhotoBrowserBottomToolbar
 - (UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
     UIView* _tmpView = [super hitTest:point withEvent:event];

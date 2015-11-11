@@ -15,7 +15,18 @@ typedef NS_ENUM(NSInteger,KTPhotoBrowserMode){
    KTPhotoBrowserModeAlbum
 };
 
-@protocol KTPhotoBrowserDelegate;
+@class KTPhotoBrowserViewController;
+
+@protocol KTPhotoBrowserDelegate <NSObject>
+
+//-(void)cellPhotoImageReload;
+//
+//-(void)newPostImageReload:(NSInteger)ImageIndex;
+
+@optional
+- (void)backFromViewController:(KTPhotoBrowserViewController *)vc currentPhotoIndex:(NSInteger)index;
+@end
+
 
 @interface KTPhotoBrowserViewController : UIViewController <UIScrollViewDelegate>
 // 代理
@@ -30,16 +41,4 @@ typedef NS_ENUM(NSInteger,KTPhotoBrowserMode){
 -(instancetype)initWithBrowserMode:(KTPhotoBrowserMode)mode;
 @end
 
-@protocol KTPhotoBrowserDelegate <NSObject>
 
--(void)cellPhotoImageReload;
-
--(void)newPostImageReload:(NSInteger)ImageIndex;
-
-@optional
-// 切换到某一页图片
-- (void)back_photoBrowser:(KTPhotoBrowserViewController *)photoBrowser selectPhotos:(NSArray *)photos;
-
-- (void)photoBrowser:(KTPhotoBrowserViewController *)photoBrowser selectPhotos:(NSArray *)photos;
-
-@end

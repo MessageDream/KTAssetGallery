@@ -24,11 +24,7 @@
 @end
 
 @interface KTPhotoBrowserBottomToolbar : UIView
-{
-    BOOL _selected;
-}
 @property (assign, nonatomic) NSInteger currentPhotoIndex;
 @property (assign, nonatomic) BOOL selected;
-@property (weak, nonatomic) KTSelectionView *selectionView;
 @property (assign, nonatomic) id<KTPhotoBrowserBottomToolbarDelegate> delegate;
 @end

@@ -80,9 +80,9 @@ static NSString *reuseIdentifier = @"reuseableCell";
     
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[_toolbar]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_toolbar)]];
     if ([self.dataSource selectionCount] > 0){
-        _toolbar.confimBtn.enabled = YES;
+        _toolbar.confimButton.enabled = YES;
     }else{
-        _toolbar.confimBtn.enabled = NO;
+        _toolbar.confimButton.enabled = NO;
     }
 }
 
@@ -101,8 +101,6 @@ static NSString *reuseIdentifier = @"reuseableCell";
     _photoScrollView.reuseableScrollViewDelegate = self;
     _photoScrollView.reuseableScrollViewDataSource = self;
     [_photoScrollView setExclusiveTouch:YES];
-    
-    //    _photoScrollView.contentOffset = CGPointMake(_currentPhotoIndex * frame.size.width, 0);
 }
 
 - (void)viewDidLoad{
@@ -113,17 +111,19 @@ static NSString *reuseIdentifier = @"reuseableCell";
     if (_currentMode == KTPhotoBrowserModeAlbum) {
         [self createBottomToolbar];
     }
-     _photoScrollView.contentOffset = CGPointMake(_currentPhotoIndex * _photoScrollView.frame.size.width, 0);
+    [self showPhotoViewAtIndex:_currentPhotoIndex];
 }
 
 #pragma mark - KTPhotoBrowserToolbarDelegate
 -(void)back{
-    NSMutableArray *array = [NSMutableArray array];
-    [array addObjectsFromArray:[self.dataSource selections]];
-    [_delegate back_photoBrowser:self selectPhotos:array];
+    [_delegate backFromViewController:self currentPhotoIndex:_currentPhotoIndex];
 }
 
 -(void)confirm{
+   [_delegate backFromViewController:self currentPhotoIndex:_currentPhotoIndex];
+}
+
+-(void)save{
     
 }
 
@@ -139,13 +139,17 @@ static NSString *reuseIdentifier = @"reuseableCell";
 -(void)didSelectedAtIndex:(NSInteger)index{
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
    [self.dataSource selectObjectAtIndexPath:indexPath];
-    [_toolbar setSelectLabelCount:[self.dataSource selectionCount]];
+    NSInteger count = [self.dataSource selectionCount];
+    [_toolbar setSelectLabelCount:count];
+    _toolbar.confimButton.enabled = count > 0;
 }
 
 -(void)didDeSelectedAtIndex:(NSInteger)index{
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
     [self.dataSource deselectObjectAtIndexPath:indexPath];
-    [_toolbar setSelectLabelCount:[self.dataSource selectionCount]];
+    NSInteger count = [self.dataSource selectionCount];
+    [_toolbar setSelectLabelCount:count];
+    _toolbar.confimButton.enabled = count > 0;
 }
 
 -(void)selectedFailedAtIndex:(NSInteger)index{
@@ -193,9 +197,9 @@ static NSString *reuseIdentifier = @"reuseableCell";
 }
 
 #pragma mark - KTReuseableScrollViewDelegate
-- (void)reuseableScrollView:(KTReuseableScrollView *)reuseableScrollView didSelectAtIndex:(NSUInteger)index{
-    
-}
+//- (void)reuseableScrollView:(KTReuseableScrollView *)reuseableScrollView didSelectAtIndex:(NSUInteger)index{
+//    
+//}
 
 //- (CGFloat)reuseableScrollView:(KTReuseableScrollView *)reuseableScrollView marginForType:(KTReuseableScrollViewMarginType)type{
 //    
@@ -208,13 +212,10 @@ static NSString *reuseIdentifier = @"reuseableCell";
 
 
 #pragma mark 显示一个图片view
-- (void)showPhotoViewAtIndex:(int)index{
-    
+- (void)showPhotoViewAtIndex:(NSInteger)index{
+     _photoScrollView.contentOffset = CGPointMake(index * _photoScrollView.frame.size.width, 0);
 }
 
--(void)save{
-    
-}
 
 - (void)saveImageToPhotos:(UIImage*)savedImage{
     UIImageWriteToSavedPhotosAlbum(savedImage, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);

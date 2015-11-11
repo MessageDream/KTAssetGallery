@@ -9,6 +9,11 @@
 #import "KTPhotoBrowserToolbar.h"
 #import "KTSelectionView.h"
 
+@interface KTPhotoBrowserToolbar()
+@property (weak, nonatomic) UILabel *indexLabel;
+@property (weak, nonatomic) KTSelectionView *selectionView;
+@end
+
 @implementation KTPhotoBrowserToolbar
 
 - (UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
@@ -24,6 +29,7 @@
     if (self) {
         self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.6];
         UIButton *backbutton  = [UIButton buttonWithType:UIButtonTypeCustom];
+        [backbutton setTitle:@"back" forState:UIControlStateNormal];
         [backbutton addTarget:self action:@selector(click_back) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:backbutton];
         backbutton.translatesAutoresizingMaskIntoConstraints = NO;
@@ -32,12 +38,12 @@
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-12-[backbutton]-12-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(backbutton)]];
         
         UIButton *confimbutton  = [UIButton buttonWithType:UIButtonTypeCustom];
-        [confimbutton setTitle:@"确定" forState:UIControlStateNormal];
+        [confimbutton setTitle:@"ok" forState:UIControlStateNormal];
         
         [confimbutton addTarget:self action:@selector(click_confirm) forControlEvents:UIControlEventTouchUpInside];
         confimbutton.enabled =  NO;
         [self addSubview:confimbutton];
-        self.confimBtn = confimbutton;
+        _confimButton = confimbutton;
         confimbutton.translatesAutoresizingMaskIntoConstraints = NO;
         
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[confimbutton]-12-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(confimbutton)]];

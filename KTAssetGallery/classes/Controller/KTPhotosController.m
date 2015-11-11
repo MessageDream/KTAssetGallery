@@ -15,7 +15,7 @@
 #import "KTPhotoBrowserViewController.h"
 
 static CGFloat imageCellSpace = 1.f;
-@interface KTPhotosController()<UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,KTPhotoCellDelegate>
+@interface KTPhotosController()<UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,KTPhotoCellDelegate,KTPhotoBrowserDelegate>
 {
     void (^_loadContentBlock)(KTPhotoCell *cell, id<KTAssetProtocol> asset, BOOL isSelected, NSIndexPath *indexPath);
 }
@@ -191,11 +191,17 @@ static CGFloat imageCellSpace = 1.f;
             vc.dataSource = self.dataSource;
             vc.currentPhotoIndex = indexPath.row;
             vc.settings = self.settings;
+            vc.delegate = self;
             [self presentViewController:vc animated:YES completion:nil];
         }
     }
 }
 
+#pragma mark - KTPhotoBrowserDelegate
+- (void)backFromViewController:(KTPhotoBrowserViewController *)vc currentPhotoIndex:(NSInteger)index{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.collectionView reloadData];
+}
 
 - (void)syncSelectionInDataSource:(KTPhotosDataSource *)dataSource withCollectionView:(UICollectionView *)collectionView {
     NSArray<NSIndexPath *> *indexPaths = [dataSource selectedIndexPaths];
