@@ -41,7 +41,7 @@
         
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[selectionView]-12-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(selectionView)]];
         
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-12-[selectionView]-12-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(selectionView)]];
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-8-[selectionView]-8-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(selectionView)]];
         
         [selectionView addConstraint:[NSLayoutConstraint constraintWithItem:selectionView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:selectionView attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0.0]];
     }

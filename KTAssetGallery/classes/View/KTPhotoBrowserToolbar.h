@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class KTSelectionView;
+#import "KTSelectionView.h"
 
 @protocol KTPhotoBrowserToolbarDelegate<NSObject>
 
@@ -20,8 +20,10 @@
 @end
 
 @interface KTPhotoBrowserToolbar : UIView
+@property (weak, nonatomic, readonly) UIButton *backButton;
 @property (weak, nonatomic, readonly) UIButton *downloadButton;
 @property (weak, nonatomic, readonly) UIButton *confimButton;
+@property (weak, nonatomic, readonly) KTSelectionView *selectionView;
 // 所有的图片对象
 @property (assign, nonatomic) NSUInteger totalCount;
 // 当前展示的图片索引

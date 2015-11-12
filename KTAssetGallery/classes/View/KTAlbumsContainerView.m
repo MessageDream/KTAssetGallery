@@ -33,7 +33,7 @@
 }
 
 - (void)drawBackground:(CGRect)frame inContext:(CGContextRef) context{
-    CGFloat R0 = 0xe6/255.0, G0 = 0xe4/255.0, B0 =  0xe4/255.0;
+    CGFloat R0 = 255/255.0, G0 = 255/255.0, B0 =  255/255.0;
     
     CGFloat arrowSize = 8.f;
     CGFloat cornerRadius = 8.f;

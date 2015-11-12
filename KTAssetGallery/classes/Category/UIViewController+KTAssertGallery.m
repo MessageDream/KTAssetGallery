@@ -28,14 +28,14 @@
                     hasSelected:(NSArray<id<KTAssetProtocol>> *) hasSelected
                      whenSelect:(void (^)(id<KTAssetProtocol> asset)) selectionBlock
                        deSelect:(void (^)(id<KTAssetProtocol> asset)) deSelectionBlock
-                   tapToPreview:(void (^)(id<KTAssetProtocol> asset)) tapToPreviewBlock
+                   tapToPreviewVideo:(void (^)(id<KTAssetProtocol> asset)) tapToPreviewVideoBlock
                          cancel:(void (^)(NSArray<id<KTAssetProtocol>> *assets)) cancelBlock
                          finish:(void (^)(NSArray<id<KTAssetProtocol>> *assets)) finishBlock{
     
     KTImagePickerController *vc = [KTImagePickerController imagePickerControllerWithHasSelected:hasSelected
                                                                                      whenSelect:selectionBlock
                                                                                        deSelect:deSelectionBlock
-                                                                                    tapToPreview:tapToPreviewBlock
+                                                                                    tapToPreview:tapToPreviewVideoBlock
                                                                                          cancel:^(NSArray<id<KTAssetProtocol>> *assets) {
                                                                                              if (hideBlock) {
                                                                                                  hideBlock(self.kt_vc);
@@ -77,14 +77,14 @@
                            hasSelected:(NSArray<id<KTAssetProtocol>> *) hasSelected
                             whenSelect:(void (^)(id<KTAssetProtocol> asset)) selectionBlock
                               deSelect:(void (^)(id<KTAssetProtocol> asset)) deSelectionBlock
-                          tapToPreview:(void (^)(id<KTAssetProtocol> asset)) tapToPreviewBlock
+                          tapToPreviewVideo:(void (^)(id<KTAssetProtocol> asset)) tapToPreviewVideoBlock
                                 cancel:(void (^)(NSArray<id<KTAssetProtocol>> *assets)) cancelBlock
                                 finish:(void (^)(NSArray<id<KTAssetProtocol>> *assets)) finishBlock
                               complete:(void (^)())complete{
     KTImagePickerController *vc = [KTImagePickerController imagePickerControllerWithHasSelected:hasSelected
                                                                                      whenSelect:selectionBlock
                                                                                        deSelect:deSelectionBlock
-                                                                                    tapToPreview:tapToPreviewBlock
+                                                                                    tapToPreview:tapToPreviewVideoBlock
                                                                                          cancel:^(NSArray<id<KTAssetProtocol>> *assets) {
                                                                                             
                                                                                              [self dismissViewControllerAnimated:YES completion:nil];

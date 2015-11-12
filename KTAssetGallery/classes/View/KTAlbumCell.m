@@ -23,14 +23,47 @@
         imageContainer.translatesAutoresizingMaskIntoConstraints = NO;
         self.contentView.translatesAutoresizingMaskIntoConstraints = NO;
         
+        CGFloat scale = 1.0f;
         
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[imageContainer(==79)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(imageContainer)]];
+        if ([UIDevice currentDevice].userInterfaceIdiom != UIUserInterfaceIdiomPad) {
+            if ([UIScreen mainScreen].scale == 3.0f) {
+//                IPhone6Plus;
+                scale = 1.5f;
+            } else if (MAX([UIScreen mainScreen].bounds.size.height,
+                           [UIScreen mainScreen].bounds.size.width) == 667) {
+//                IPhone6;
+                scale = 1.5f;
+                
+            } else {
+//                IPhone;
+                scale = 1.0f;
+            }
+            
+        } else {
+            if (([UIScreen instancesRespondToSelector:@selector(scale)]
+                 ? (2 == [[UIScreen mainScreen] scale])
+                 : NO)) {
+//                IPadHD;
+                scale = 2.0f;
+            } else {
+//                IPad;
+                scale = 1.5f;
+            }
+        }
         
-        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-8-[imageContainer(==79)]-8-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(imageContainer)]];
+         CGFloat imageHeight = 42.f * scale;
+        
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[imageContainer]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(imageContainer)]];
+        
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-8-[imageContainer]-8-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(imageContainer)]];
+        
+        [imageContainer addConstraint:[NSLayoutConstraint constraintWithItem:imageContainer attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1.0 constant:imageHeight]];
+        
+        [imageContainer addConstraint:[NSLayoutConstraint constraintWithItem:imageContainer attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1.0 constant:imageHeight]];
         
         UIImageView *tView = [[UIImageView alloc] init];
         [imageContainer addSubview:tView];
-         _thirdImageView = tView;
+        _thirdImageView = tView;
         _thirdImageView.translatesAutoresizingMaskIntoConstraints = NO;
         [imageContainer addConstraint:[NSLayoutConstraint constraintWithItem:_thirdImageView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:imageContainer attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0]];
         
@@ -72,10 +105,11 @@
             imageView.layer.shadowOpacity = 1.0;
         }
         
-       UILabel *titleLabel = [[UILabel alloc] init];
+        UILabel *titleLabel = [[UILabel alloc] init];
         [self.contentView addSubview:titleLabel];
         _titleLabel = titleLabel;
         _titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        [_titleLabel setContentHuggingPriority:251 forAxis:UILayoutConstraintAxisHorizontal];
         
         [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:_titleLabel attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:imageContainer attribute:NSLayoutAttributeRight multiplier:1.0f constant:8.0f]];
         
@@ -89,12 +123,11 @@
 
 
 -(void)updateConstraints{
-    [super updateConstraints];
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < __IPHONE_8_0/10000){
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.contentView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0f constant:0.0f]];
-        
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.contentView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1.0f constant:0.0f]];
+        UIView *contentView = self.contentView;
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:contentView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0.0f]];
     }
+    [super updateConstraints];
 }
 
 

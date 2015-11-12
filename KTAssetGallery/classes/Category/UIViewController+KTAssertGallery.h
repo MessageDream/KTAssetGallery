@@ -21,7 +21,7 @@
                     hasSelected:(NSArray<id<KTAssetProtocol>> *) hasSelected
                      whenSelect:(void (^)(id<KTAssetProtocol> asset)) selectionBlock
                        deSelect:(void (^)(id<KTAssetProtocol> asset)) deSelectionBlock
-                   tapToPreview:(void (^)(id<KTAssetProtocol> asset)) tapToPreviewBlock
+                   tapToPreviewVideo:(void (^)(id<KTAssetProtocol> asset)) tapToPreviewVideoBlock
                          cancel:(void (^)(NSArray<id<KTAssetProtocol>> *assets)) cancelBlock
                          finish:(void (^)(NSArray<id<KTAssetProtocol>> *assets)) finishBlock;
 
@@ -30,7 +30,7 @@
                     hasSelected:(NSArray<id<KTAssetProtocol>> *) hasSelected
                      whenSelect:(void (^)(id<KTAssetProtocol> asset)) selectionBlock
                        deSelect:(void (^)(id<KTAssetProtocol> asset)) deSelectionBlock
-                   tapToPreview:(void (^)(id<KTAssetProtocol> asset)) tapToPreviewBlock
+                   tapToPreviewVideo:(void (^)(id<KTAssetProtocol> asset)) tapToPreviewVideoBlock
                          cancel:(void (^)(NSArray<id<KTAssetProtocol>> *assets)) cancelBlock
                          finish:(void (^)(NSArray<id<KTAssetProtocol>> *assets)) finishBlock
                        complete:(void (^)())complete;

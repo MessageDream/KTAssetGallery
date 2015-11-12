@@ -24,6 +24,7 @@ static NSString *reuseIdentifier = @"reuseableCell";
     KTPhotoBrowserMode _currentMode;
     // 一开始的状态栏
     BOOL _statusBarHiddenInited;
+    UIImage *_currentOriginalPhoto;
 }
 @property(nonatomic,strong) KTPhotoBrowserToolbar *toolbar;
 @property(nonatomic,strong) KTPhotoBrowserBottomToolbar *bottomtoolbar;
@@ -40,7 +41,6 @@ static NSString *reuseIdentifier = @"reuseableCell";
 
 #pragma mark - Lifecycle
 - (void)loadView{
-    _statusBarHiddenInited = [UIApplication sharedApplication].isStatusBarHidden;
     self.view = [[UIView alloc] init];
     if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation)) {
         int w  =  [UIScreen mainScreen].bounds.size.width > [UIScreen mainScreen].bounds.size.height?[UIScreen mainScreen].bounds.size.width:[UIScreen mainScreen].bounds.size.height;
@@ -70,20 +70,53 @@ static NSString *reuseIdentifier = @"reuseableCell";
 
 - (void)createToolbar{
     _toolbar = [[KTPhotoBrowserToolbar alloc] init];
-    _toolbar.totalCount = [self.dataSource countOfSection:0];
     _toolbar.delegate = self;
-    
     [self.view addSubview:_toolbar];
-    [_toolbar setSelectLabelCount:[self.dataSource selectionCount]];
+    if (self.settings.backButtonImage) {
+        [_toolbar.backButton setImage:self.settings.backButtonImage forState:UIControlStateNormal];
+        [_toolbar.backButton setTitle:@"" forState:UIControlStateNormal];
+    }
     _toolbar.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[_toolbar(==60)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_toolbar)]];
-    
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[_toolbar]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_toolbar)]];
-    if ([self.dataSource selectionCount] > 0){
-        _toolbar.confimButton.enabled = YES;
-    }else{
-        _toolbar.confimButton.enabled = NO;
+    
+    NSInteger totalCount = 0;
+    switch (_currentMode) {
+        case KTPhotoBrowserModeDefault:{
+            totalCount = self.photoUrls.count;
+            _toolbar.confimButton.hidden = YES;
+            _toolbar.selectionView.hidden = YES;
+            _toolbar.downloadButton.hidden = NO;
+            if (self.settings.downloadButtonImage) {
+                [_toolbar.downloadButton setImage:self.settings.downloadButtonImage forState:UIControlStateNormal];
+                [_toolbar.downloadButton setTitle:@"" forState:UIControlStateNormal];
+            }
+        }
+            break;
+        case KTPhotoBrowserModeAlbum:{
+            totalCount = [self.dataSource countOfSection:0];
+            [_toolbar setSelectLabelCount:[self.dataSource selectionCount]];
+            if (self.settings.confirmButtonImage) {
+                [_toolbar.confimButton setImage:self.settings.confirmButtonImage forState:UIControlStateNormal];
+                [_toolbar.confimButton setTitle:@"" forState:UIControlStateNormal];
+            }
+            if ([self.dataSource selectionCount] > 0){
+                _toolbar.confimButton.enabled = YES;
+            }else{
+                _toolbar.confimButton.enabled = NO;
+            }
+        }
+            break;
+        case KTPhotoBrowserModeAssets:{
+            totalCount = self.photos.count;
+            _toolbar.confimButton.hidden = YES;
+            _toolbar.downloadButton.hidden = YES;
+        }
+            break;
+        default:
+            break;
     }
+    _toolbar.totalCount = totalCount;
 }
 
 - (void)createScrollView{
@@ -124,7 +157,7 @@ static NSString *reuseIdentifier = @"reuseableCell";
 }
 
 -(void)save{
-    
+    [self saveImageToPhotos:_currentOriginalPhoto];
 }
 
 #pragma mark - KTPhotoBrowserBottomToolbarDelegate
@@ -169,13 +202,28 @@ static NSString *reuseIdentifier = @"reuseableCell";
     //    [self removeFromParentViewController];
 }
 
-- (void)photoViewImageFinishLoad:(KTPreviewPhotoView *)photoView{
+- (void)photoViewImageFinishLoad:(KTPreviewPhotoView *)photoView photo:(UIImage *)photo{
     _toolbar.currentPhotoIndex = _currentPhotoIndex;
+    _currentOriginalPhoto = photo;
 }
 
 #pragma mark - KTReuseableScrollViewDateSource
 - (NSUInteger)numberOfCellInReuseableScrollView:(KTReuseableScrollView *)reuseableScrollView{
-    return [self.dataSource countOfSection:0];
+    NSInteger count = 0;
+    switch (_currentMode) {
+        case KTPhotoBrowserModeDefault:
+            count = self.photoUrls.count;
+            break;
+        case KTPhotoBrowserModeAlbum:
+            count = [self.dataSource countOfSection:0];
+            break;
+        case KTPhotoBrowserModeAssets:
+            count = self.photos.count;
+            break;
+        default:
+            break;
+    }
+    return count;
 }
 
 - (KTReuseableScrollViewCell *)reuseableScrollView:(KTReuseableScrollView *)reuseableScrollView atIndex:(NSUInteger)index{
@@ -184,14 +232,30 @@ static NSString *reuseIdentifier = @"reuseableCell";
     photoView.photoViewDelegate = self;
     [cell setPageViewInCell:photoView];
     
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-    id<KTAssetProtocol> asset = [self.dataSource valueOfIndexPath:indexPath];
-    photoView.asset = asset;
+    switch (_currentMode) {
+        case KTPhotoBrowserModeDefault:{
+            photoView.photoUrl = self.photoUrls[index];
+        }
+            break;
+        case KTPhotoBrowserModeAlbum:{
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+            id<KTAssetProtocol> asset = [self.dataSource valueOfIndexPath:indexPath];
+            photoView.asset = asset;
+            _bottomtoolbar.currentPhotoIndex = index;
+            _bottomtoolbar.selected = [self.dataSource isSelectedAtIndexPath:indexPath];
+        }
+            break;
+        case KTPhotoBrowserModeAssets:{
+            id<KTAssetProtocol> asset = self.photos[index];
+            photoView.asset = asset;
+        }
+            break;
+        default:
+            break;
+    }
     
     _currentPhotoIndex = index;
     _toolbar.currentPhotoIndex = index;
-    _bottomtoolbar.currentPhotoIndex = index;
-    _bottomtoolbar.selected = [self.dataSource isSelectedAtIndexPath:indexPath];
     
     return cell;
 }
@@ -205,11 +269,6 @@ static NSString *reuseIdentifier = @"reuseableCell";
 //    
 //}
 
-#pragma mark - 私有方法
-- (void)setPhotos:(NSMutableArray *)photos{
-    _photos = photos;
-}
-
 
 #pragma mark 显示一个图片view
 - (void)showPhotoViewAtIndex:(NSInteger)index{
@@ -222,21 +281,6 @@ static NSString *reuseIdentifier = @"reuseableCell";
 }
 
 - (void)image: (UIImage *) image didFinishSavingWithError: (NSError *) error contextInfo: (void *) contextInfo{
-    //    KTMBProgressHUD * hud = [[KTMBProgressHUD alloc] initWithView:self.view];
-    //    hud.mode = KTMBProgressHUDModeText;
-    //    hud.removeFromSuperViewOnHide = YES;
-    //
-    //    [self.view addSubview:hud];
-    //
-    //    if(error){
-    //        hud.detailsLabelText =  [KTResManager loadString:STRING_NO_PERMISSION_TO_ACCESS_ALBUM] ; //XBC
-    //
-    //    }else{
-    //        hud.labelText = [KTResManager loadString:STRING_SAVE_GALLERY] ;  //XBC
-    //    }
-    //
-    //    [hud show:YES];
-    //    [hud hide:YES afterDelay:1];
     
 }
 
@@ -250,4 +294,7 @@ static NSString *reuseIdentifier = @"reuseableCell";
 ////    }
 //}
 
+-(void)dealloc{
+    
+}
 @end

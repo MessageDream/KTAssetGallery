@@ -9,6 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @protocol KTSettingsProtocol <NSObject>
+@property(strong,nonatomic)UIImage *backButtonImage;
+@property(strong,nonatomic)UIImage *confirmButtonImage;
+@property(strong,nonatomic)UIImage *downloadButtonImage;
+@property(strong,nonatomic)UIImage *videoIcon;
 @property(assign,nonatomic)NSInteger maxNumberOfSelections;
 @property(copy,nonatomic)NSString *selectionString;
 @property(strong,nonatomic)UIColor *selectionFillColor;

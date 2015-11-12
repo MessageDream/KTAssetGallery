@@ -11,7 +11,6 @@
 
 @interface KTPhotoBrowserToolbar()
 @property (weak, nonatomic) UILabel *indexLabel;
-@property (weak, nonatomic) KTSelectionView *selectionView;
 @end
 
 @implementation KTPhotoBrowserToolbar
@@ -32,10 +31,11 @@
         [backbutton setTitle:@"back" forState:UIControlStateNormal];
         [backbutton addTarget:self action:@selector(click_back) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:backbutton];
+        _backButton = backbutton;
         backbutton.translatesAutoresizingMaskIntoConstraints = NO;
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-12-[backbutton]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(backbutton)]];
         
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-12-[backbutton]-12-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(backbutton)]];
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-8-[backbutton]-8-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(backbutton)]];
         
         UIButton *confimbutton  = [UIButton buttonWithType:UIButtonTypeCustom];
         [confimbutton setTitle:@"ok" forState:UIControlStateNormal];
@@ -48,18 +48,18 @@
         
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[confimbutton]-12-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(confimbutton)]];
         
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-12-[confimbutton]-12-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(confimbutton)]];
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-8-[confimbutton]-8-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(confimbutton)]];
         
         KTSelectionView *selectionView = [[KTSelectionView alloc] init];
         selectionView.selectionString = @"0";
         selectionView.selected = YES;
         
         [self addSubview:selectionView];
-        self.selectionView = selectionView;
+        _selectionView = selectionView;
         
         selectionView.translatesAutoresizingMaskIntoConstraints = NO;
         
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-12-[selectionView]-12-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(selectionView)]];
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-8-[selectionView]-8-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(selectionView)]];
         
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[selectionView]-12-[confimbutton]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(selectionView,confimbutton)]];
         
@@ -74,19 +74,24 @@
         indexLabel.frame =CGRectMake(0, 0, indexLabel.bounds.size.width, indexLabel.bounds.size.height);
         [self addSubview:indexLabel];
         self.indexLabel= indexLabel;
-        
         indexLabel.translatesAutoresizingMaskIntoConstraints = NO;
         
         [self addConstraint:[NSLayoutConstraint constraintWithItem:indexLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
         
         [self addConstraint:[NSLayoutConstraint constraintWithItem:indexLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0.0]];
         
-        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-12-[indexLabel]-12-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(indexLabel)]];
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-8-[indexLabel]-8-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(indexLabel)]];
         
-        //        UIButton *downloadBtn  = [UIButton buttonWithType:UIButtonTypeCustom];
-        //        downloadBtn.hidden = YES;
-        //        [self addSubview:downloadBtn];
-        //        self.downloadBtn = downloadBtn;
+        UIButton *downloadBtn  = [UIButton buttonWithType:UIButtonTypeCustom];
+        downloadBtn.hidden = YES;
+        [self addSubview:downloadBtn];
+        _downloadButton = downloadBtn;
+        downloadBtn.translatesAutoresizingMaskIntoConstraints = NO;
+        
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[downloadBtn]-12-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(downloadBtn)]];
+        
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-8-[downloadBtn]-8-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(downloadBtn)]];
+        
     }
     return self;
 }

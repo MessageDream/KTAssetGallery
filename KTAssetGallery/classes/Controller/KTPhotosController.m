@@ -32,6 +32,7 @@ static CGFloat imageCellSpace = 1.f;
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     [layout setScrollDirection:UICollectionViewScrollDirectionVertical];
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:layout];
+    collectionView.translatesAutoresizingMaskIntoConstraints = NO;
     collectionView.backgroundColor = [UIColor whiteColor];
     collectionView.allowsMultipleSelection = YES;
     [collectionView setShowsVerticalScrollIndicator:NO];
@@ -185,7 +186,6 @@ static CGFloat imageCellSpace = 1.f;
         });
     }else{
         //默认预览
-        
         if (asset.mediaType == KTAssetMediaTypeImage) {
             KTPhotoBrowserViewController *vc = [[KTPhotoBrowserViewController alloc] initWithBrowserMode:KTPhotoBrowserModeAlbum];
             vc.dataSource = self.dataSource;

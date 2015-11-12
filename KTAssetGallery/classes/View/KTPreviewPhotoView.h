@@ -13,7 +13,7 @@
 @protocol KTPreviewPhotoViewDelegate <NSObject>
 - (void)photoViewSingleTap:(KTPreviewPhotoView *)photoView;
 - (void)photoViewDidEndZoom:(KTPreviewPhotoView *)photoView;
-- (void)photoViewImageFinishLoad:(KTPreviewPhotoView *)photoView;
+- (void)photoViewImageFinishLoad:(KTPreviewPhotoView *)photoView photo:(UIImage *)photo;
 @end
 
 

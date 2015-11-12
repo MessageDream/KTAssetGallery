@@ -95,6 +95,38 @@
     self.photoController.mediaType = mediaType;
 }
 
+-(void)setBackButtonImage:(UIImage *)backButtonImage{
+    self.settings.backButtonImage = backButtonImage;
+}
+
+-(UIImage *)backButtonImage{
+    return self.settings.backButtonImage;
+}
+
+-(void)setConfirmButtonImage:(UIImage *)confirmButtonImage{
+    self.settings.confirmButtonImage = confirmButtonImage;
+}
+
+-(UIImage *)confirmButtonImage{
+    return self.settings.confirmButtonImage;
+}
+
+-(void)setDownloadButtonImage:(UIImage *)downloadButtonImage{
+    self.settings.downloadButtonImage = downloadButtonImage;
+}
+
+-(UIImage *)downloadButtonImage{
+    return self.settings.downloadButtonImage;
+}
+
+-(void)setVideoIcon:(UIImage *)videoIcon{
+    self.settings.videoIcon = videoIcon;
+}
+
+-(UIImage *)videoIcon{
+    return self.settings.videoIcon;
+}
+
 -(void)setMaxNumberOfSelections:(NSInteger)maxNumberOfSelections{
     self.settings.maxNumberOfSelections = maxNumberOfSelections;
 }

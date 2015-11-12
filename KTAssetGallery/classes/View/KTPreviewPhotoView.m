@@ -15,7 +15,7 @@
     BOOL _doubleTap;
     UIImageView *_imageView;
 }
-@property (nonatomic,strong) UIActivityIndicatorView *activityIndicator ;
+@property (weak, nonatomic) UIActivityIndicatorView *activityIndicator ;
 @end
 
 @implementation KTPreviewPhotoView
@@ -57,21 +57,19 @@
     return self;
 }
 
--(void)setPhotoUrl:(NSString *)photoUrl{
-    _photoUrl = photoUrl;
-}
-
--(void)setAsset:(id<KTAssetProtocol>)asset{
-    _asset = asset;
-}
 - (void)showImage{
     _imageView.image = nil;
     self.minimumZoomScale  = 1.0;
     self.maximumZoomScale = 4.0;
-    [_asset fullScreenImage:^(UIImage *image) {
-        _imageView.image = image;
-        [self adjustFrame];
-    }];
+    if (self.photoUrl) {
+        
+    }else {
+        [_asset fullScreenImage:^(UIImage *image) {
+            _imageView.image = image;
+            [self.photoViewDelegate photoViewImageFinishLoad:self photo:image];
+            [self adjustFrame];
+        }];
+    }
 }
 
 -(void)didMoveToWindow{

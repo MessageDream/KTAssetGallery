@@ -21,6 +21,7 @@
 @property (weak, nonatomic) UITableView *tableView;
 @property (weak, nonatomic) UIView *containerView;
 @property (strong, nonatomic) KTAlbumsDataSource *dataSource;
+@property (weak, nonatomic) NSLayoutConstraint *showLayout;
 @end
 
 @implementation KTAlbumsController
@@ -43,16 +44,20 @@
     [view addSubview:containerView];
     _containerView = containerView;
     
+   NSLayoutConstraint *layout = [NSLayoutConstraint constraintWithItem:_containerView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0f];
+    [view addConstraint:layout];
+    self.showLayout = layout;
+    
     [view addConstraint:[NSLayoutConstraint constraintWithItem:containerView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
     
     
-    [view addConstraint:[NSLayoutConstraint constraintWithItem:containerView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeWidth multiplier:1.0/2 constant:0.0]];
+    [view addConstraint:[NSLayoutConstraint constraintWithItem:containerView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeWidth multiplier:1.0/1.5 constant:0.0]];
     
     [view addConstraint:[NSLayoutConstraint constraintWithItem:containerView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeHeight multiplier:1.0/4 constant:0.0]];
     
     self.view = view;
     
-    self.tableView = containerView.tableView;
+   self.tableView = containerView.tableView;
 }
 
 -(void)viewDidLoad{
@@ -88,13 +93,11 @@
             }
         }];
     };
-    [self.dataSource setTableView:self.tableView cellClass:[KTAlbumCell class] loadContentBlock:_loadContentBlock];
-    self.tableView.delegate = self;
+    
 }
 
 
 -(void)showInViewController:(UIViewController *)viewController fromView:(UIView *)fromView{
-    
     [viewController addChildViewController:self];
     
     UIView *superView = viewController.view;
@@ -110,7 +113,10 @@
     
     [superView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[currentView]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(currentView)]];
     
-    [currentView addConstraint:[NSLayoutConstraint constraintWithItem:_containerView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:currentView attribute:NSLayoutAttributeTop multiplier:1.0 constant:CGRectGetMaxY(rect)+10]];
+    self.showLayout.constant = CGRectGetMaxY(rect)+10;
+    
+    self.tableView.delegate = self;
+    [self.dataSource setTableView:self.tableView cellClass:[KTAlbumCell class] loadContentBlock:_loadContentBlock];
     
     currentView.alpha = 0.0;
     [UIView animateWithDuration:0.3 animations:^{
@@ -145,7 +151,7 @@
     if (_loadContentBlock) {
         _loadContentBlock(_heighCell,album);
     }
-    CGFloat height = [_heighCell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+    CGFloat height = [_heighCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
     return height;
 }
 

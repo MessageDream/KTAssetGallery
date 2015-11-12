@@ -103,6 +103,7 @@
 		B23C88FE1BECC51800006C88 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		B23C88FF1BECC51800006C88 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		B27FAB2B1BE74A1B00DA76F7 /* KTAssetGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KTAssetGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2BEB56D1BF45B8400E11655 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		B2ECA93D1BF2F401000BE897 /* UIViewController+KTAssertGallery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+KTAssertGallery.h"; sourceTree = "<group>"; };
 		B2ECA93E1BF2F401000BE897 /* UIViewController+KTAssertGallery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+KTAssertGallery.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -230,6 +231,7 @@
 		B27FAB221BE74A1B00DA76F7 = {
 			isa = PBXGroup;
 			children = (
+				B2BEB56D1BF45B8400E11655 /* Reveal.framework */,
 				B23C88C41BECC51800006C88 /* KTAssetGallery */,
 				B27FAB2C1BE74A1B00DA76F7 /* Products */,
 			);
@@ -461,15 +463,30 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: xing bin (D9V94Z36YU)";
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/KTAssetGallery",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/KTAssetGallery/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lz",
+					"-framework",
+					Reveal,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.buxuxiao.jayden.KTAssertGallery;
 				PRODUCT_NAME = KTAssetGallery;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -477,15 +494,30 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: xing bin (D9V94Z36YU)";
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/KTAssetGallery",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/KTAssetGallery/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lz",
+					"-framework",
+					Reveal,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.buxuxiao.jayden.KTAssertGallery;
 				PRODUCT_NAME = KTAssetGallery;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

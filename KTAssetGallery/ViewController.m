@@ -37,7 +37,7 @@
         NSLog(@"%@",asset);
     } deSelect:^(id<KTAssetProtocol> asset) {
         NSLog(@"%@",asset);
-    } tapToPreview:^(id<KTAssetProtocol> asset){
+    } tapToPreviewVideo:^(id<KTAssetProtocol> asset){
        NSLog(@"%@",asset);
     } cancel:^(NSArray<id<KTAssetProtocol>> *assets) {
         NSLog(@"%@",assets);
@@ -58,7 +58,7 @@
         NSLog(@"%@",asset);
     } deSelect:^(id<KTAssetProtocol> asset) {
         NSLog(@"%@",asset);
-    } tapToPreview:^(id<KTAssetProtocol> asset){
+    } tapToPreviewVideo:^(id<KTAssetProtocol> asset){
         NSLog(@"%@",asset);
     } cancel:^(NSArray<id<KTAssetProtocol>> *assets) {
         NSLog(@"%@",assets);
