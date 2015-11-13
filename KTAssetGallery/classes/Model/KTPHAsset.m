@@ -37,9 +37,9 @@
 }
 
 - (void)thumbnail:(void (^)(UIImage *image))imageCallback;{
-  [[PHCachingImageManager defaultManager] requestImageForAsset:self.asset targetSize:CGSizeMake(79, 79) contentMode:PHImageContentModeAspectFill options:nil resultHandler:^(UIImage *result, NSDictionary *info) {
-      imageCallback(result);
-  }];
+    [[PHCachingImageManager defaultManager] requestImageForAsset:self.asset targetSize:CGSizeMake(79, 79) contentMode:PHImageContentModeAspectFill options:nil resultHandler:^(UIImage *result, NSDictionary *info) {
+        imageCallback(result);
+    }];
 }
 
 - (void)aspectRatioThumbnail:(void (^)(UIImage *image))imageCallback;{
@@ -63,9 +63,6 @@
     }];
 }
 
-- (void)CGImageWithOptions:(NSDictionary *)options callback:(void (^)(UIImage *))imageCallback{
-   
-}
 
 - (void)fullScreenImage:(void (^)(UIImage *image))imageCallback;{
     [[PHCachingImageManager defaultManager] requestImageForAsset:self.asset targetSize:[UIScreen mainScreen].bounds.size contentMode:PHImageContentModeAspectFit options:nil resultHandler:^(UIImage *result, NSDictionary *info) {
@@ -88,30 +85,28 @@
     }];
 }
 
-- (float)scale{
-    return 0.0f;
-}
-
--(NSTimeInterval)duration{
-    return self.asset.duration;
-}
-
 - (void)filename:(void (^)(NSString *fileName))callback{
     [[PHCachingImageManager defaultManager] requestImageDataForAsset:self.asset options:nil resultHandler:^(NSData *imageData, NSString *dataUTI, UIImageOrientation orientation, NSDictionary *info) {
         if ([info objectForKey:@"PHImageFileURLKey"]) {
             NSURL *path = [info objectForKey:@"PHImageFileURLKey"];
-            callback([path absoluteString]);
+            NSString *pathString = [path absoluteString];
+            callback([pathString lastPathComponent]);
         }
     }];
 }
 
-- (void)baseInfo:(void (^)(NSString *fileName, KTAssetOrientation orientation, NSURL *url))callback{
+- (void)baseInfo:(void (^)(NSString *fileName, KTAssetOrientation orientation,NSTimeInterval duration,NSDate *creationDate,NSDate *modificationDate,CLLocation *location))callback{
     [[PHCachingImageManager defaultManager] requestImageDataForAsset:self.asset options:nil resultHandler:^(NSData *imageData, NSString *dataUTI, UIImageOrientation orientation, NSDictionary *info) {
         if ([info objectForKey:@"PHImageFileURLKey"]) {
             NSURL *path = [info objectForKey:@"PHImageFileURLKey"];
-            NSString *fileName = [path absoluteString];
-            NSURL *url = [path absoluteURL];
-            callback(fileName,(KTAssetOrientation)orientation,url);
+            NSString *pathString = [path absoluteString];
+            NSString *fileName = [pathString lastPathComponent];
+            callback(fileName,
+                     (KTAssetOrientation)orientation,
+                     self.asset.duration,
+                     self.asset.creationDate,
+                     self.asset.modificationDate,
+                     self.asset.location);
         }
     }];
 }

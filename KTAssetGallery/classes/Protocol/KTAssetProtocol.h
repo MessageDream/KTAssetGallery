@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-@class AVPlayerItem,AVAssetExportSession,AVAsset,AVAudioMix;
+@class AVPlayerItem,AVAssetExportSession,AVAsset,AVAudioMix,CLLocation;
 
 typedef NS_ENUM(NSInteger, KTAssetMediaType) {
     KTAssetMediaTypeUnknown = 0,
@@ -32,26 +32,21 @@ typedef NS_ENUM(NSInteger, KTAssetOrientation) {
 @property(assign,nonatomic,readonly)KTAssetMediaType mediaType;
 @required
 - (void)thumbnail:(void (^)(UIImage *image))imageCallback;
+
 - (void)aspectRatioThumbnail:(void (^)(UIImage *image))imageCallback;
 
-//- (long long)size;
 
 - (void)fullResolutionImage:(void (^)(UIImage *image))imageCallback;
-
-- (void)CGImageWithOptions:(NSDictionary *)options callback:(void (^)(UIImage *image))imageCallback;
 
 - (void)fullScreenImage:(void (^)(UIImage *image))imageCallback;
 
 - (void)url:(void (^)(NSURL *url))callback;
 
-//- (NSDictionary *)metadata;
-//
 - (void)orientation:(void (^)(KTAssetOrientation orientation))orientationCallback;
 
-- (float)scale;
-- (NSTimeInterval)duration;
 - (void)filename:(void (^)(NSString *fileName))callback;
-- (void)baseInfo:(void (^)(NSString *fileName, KTAssetOrientation orientation, NSURL *url))callback;
+
+- (void)baseInfo:(void (^)(NSString *fileName, KTAssetOrientation orientation,NSTimeInterval duration,NSDate *creationDate,NSDate *modificationDate,CLLocation *location))callback;
 
 - (void)requestPlayerItemResultHandler:(void (^)(AVPlayerItem *playerItem, NSDictionary *info))resultHandler;
 

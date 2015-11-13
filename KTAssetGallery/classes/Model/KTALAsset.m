@@ -63,10 +63,6 @@
     return  imageCallback([UIImage imageWithCGImage:[self.asset.defaultRepresentation fullResolutionImage]]);
 }
 
-- (void)CGImageWithOptions:(NSDictionary *)options callback:(void (^)(UIImage *))imageCallback{
-    return  imageCallback([UIImage imageWithCGImage:[self.asset.defaultRepresentation CGImageWithOptions:options]]);
-}
-
 - (void)fullScreenImage:(void (^)(UIImage *image))imageCallback;{
     return  imageCallback([UIImage imageWithCGImage:[self.asset.defaultRepresentation fullScreenImage]]);
 }
@@ -75,20 +71,21 @@
     return callback([self.asset.defaultRepresentation url]);
 }
 
-- (float)scale{
-    return [self.asset.defaultRepresentation scale];
-}
-
--(NSTimeInterval)duration{
-    return [[self.asset valueForProperty:ALAssetPropertyDuration] timestamp];
-}
-
 - (void)filename:(void (^)(NSString *fileName))callback{
     callback([self.asset.defaultRepresentation filename]);
 }
 
-- (void)baseInfo:(void (^)(NSString *fileName, KTAssetOrientation orientation, NSURL *url))callback{
-    callback([self.asset.defaultRepresentation filename],(KTAssetOrientation)[self.asset valueForProperty:ALAssetPropertyOrientation],[self.asset.defaultRepresentation url]);
+- (void)baseInfo:(void (^)(NSString *fileName, KTAssetOrientation orientation,NSTimeInterval duration,NSDate *creationDate,NSDate *modificationDate,CLLocation *location))callback{
+    NSTimeInterval duration = 0;
+    if (self.mediaType == KTAssetMediaTypeAudio || self.mediaType == KTAssetMediaTypeVideo) {
+        duration = [[self.asset valueForProperty:ALAssetPropertyDuration] timestamp];
+    }
+    callback([self.asset.defaultRepresentation filename],
+             (KTAssetOrientation)[self.asset valueForProperty:ALAssetPropertyOrientation],
+             duration,
+             [self.asset valueForProperty:ALAssetPropertyDate],
+             [self.asset valueForProperty:ALAssetPropertyDate],
+             [self.asset valueForProperty:ALAssetPropertyLocation]);
 }
 
 - (void)requestPlayerItemResultHandler:(void (^)(AVPlayerItem *playerItem, NSDictionary *info))resultHandler{
