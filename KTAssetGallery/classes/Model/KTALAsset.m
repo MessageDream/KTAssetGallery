@@ -90,4 +90,16 @@
 - (void)baseInfo:(void (^)(NSString *fileName, KTAssetOrientation orientation, NSURL *url))callback{
     callback([self.asset.defaultRepresentation filename],(KTAssetOrientation)[self.asset valueForProperty:ALAssetPropertyOrientation],[self.asset.defaultRepresentation url]);
 }
+
+- (void)requestPlayerItemResultHandler:(void (^)(AVPlayerItem *playerItem, NSDictionary *info))resultHandler{
+    
+}
+
+- (void)requestExportSessionExportPreset:(NSString *)exportPreset resultHandler:(void (^)(AVAssetExportSession *exportSession, NSDictionary *info))resultHandler{
+    
+}
+
+- (void)requestAVAssetResultHandler:(void (^)(AVAsset *asset, AVAudioMix *audioMix, NSDictionary *info))resultHandler{
+    
+}
 @end
