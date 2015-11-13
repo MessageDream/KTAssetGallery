@@ -201,6 +201,7 @@ static CGFloat imageCellSpace = 1.f;
 - (void)backFromViewController:(KTPhotoBrowserViewController *)vc currentPhotoIndex:(NSInteger)index{
     [self dismissViewControllerAnimated:YES completion:nil];
     [self.collectionView reloadData];
+    [self updateDoneButton];
 }
 
 - (void)syncSelectionInDataSource:(KTPhotosDataSource *)dataSource withCollectionView:(UICollectionView *)collectionView {
