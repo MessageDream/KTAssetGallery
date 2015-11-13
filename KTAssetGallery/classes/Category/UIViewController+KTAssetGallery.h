@@ -11,7 +11,7 @@
 
 @class KTImagePickerSettings;
 
-@interface UIViewController(KTAssertGallery)
+@interface UIViewController(KTAssetGallery)
 @property(weak,nonatomic)UIViewController *kt_vc;
 
 -(void)kt_assetPickerCustomShow:(void (^)(UIViewController *vc)) showBlock

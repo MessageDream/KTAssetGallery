@@ -6,12 +6,12 @@
 //  Copyright © 2015年 jayden. All rights reserved.
 //
 
-#import "UIViewController+KTAssertGallery.h"
+#import "UIViewController+KTAssetGallery.h"
 #import "KTImagePickerController.h"
 #import "KTImagePickerSettings.h"
 #import <objc/runtime.h>
 
-@implementation UIViewController(KTAssertGallery)
+@implementation UIViewController(KTAssetGallery)
 
 -(void)setKt_vc:(UIViewController *)kt_vc{
     objc_setAssociatedObject(self, @selector(kt_vc), kt_vc, OBJC_ASSOCIATION_ASSIGN);

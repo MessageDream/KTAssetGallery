@@ -37,7 +37,7 @@
 		B23C89161BECC51800006C88 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B23C88FC1BECC51800006C88 /* Info.plist */; };
 		B23C89171BECC51800006C88 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C88FD1BECC51800006C88 /* main.m */; };
 		B23C89181BECC51800006C88 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B23C88FF1BECC51800006C88 /* ViewController.m */; };
-		B2ECA93F1BF2F401000BE897 /* UIViewController+KTAssertGallery.m in Sources */ = {isa = PBXBuildFile; fileRef = B2ECA93E1BF2F401000BE897 /* UIViewController+KTAssertGallery.m */; };
+		B2ECA93F1BF2F401000BE897 /* UIViewController+KTAssetGallery.m in Sources */ = {isa = PBXBuildFile; fileRef = B2ECA93E1BF2F401000BE897 /* UIViewController+KTAssetGallery.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,8 +104,8 @@
 		B23C88FF1BECC51800006C88 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		B27FAB2B1BE74A1B00DA76F7 /* KTAssetGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KTAssetGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2BEB56D1BF45B8400E11655 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
-		B2ECA93D1BF2F401000BE897 /* UIViewController+KTAssertGallery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+KTAssertGallery.h"; sourceTree = "<group>"; };
-		B2ECA93E1BF2F401000BE897 /* UIViewController+KTAssertGallery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+KTAssertGallery.m"; sourceTree = "<group>"; };
+		B2ECA93D1BF2F401000BE897 /* UIViewController+KTAssetGallery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+KTAssetGallery.h"; sourceTree = "<group>"; };
+		B2ECA93E1BF2F401000BE897 /* UIViewController+KTAssetGallery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+KTAssetGallery.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,8 +248,8 @@
 		B2ECA93C1BF2F401000BE897 /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				B2ECA93D1BF2F401000BE897 /* UIViewController+KTAssertGallery.h */,
-				B2ECA93E1BF2F401000BE897 /* UIViewController+KTAssertGallery.m */,
+				B2ECA93D1BF2F401000BE897 /* UIViewController+KTAssetGallery.h */,
+				B2ECA93E1BF2F401000BE897 /* UIViewController+KTAssetGallery.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -336,7 +336,7 @@
 				B23C89071BECC51800006C88 /* KTPhotosController.m in Sources */,
 				B23C89101BECC51800006C88 /* KTPHAsset.m in Sources */,
 				B20C8C371BF19B9900DABAAD /* KTReuseableScrollView.m in Sources */,
-				B2ECA93F1BF2F401000BE897 /* UIViewController+KTAssertGallery.m in Sources */,
+				B2ECA93F1BF2F401000BE897 /* UIViewController+KTAssetGallery.m in Sources */,
 				B23C89151BECC51800006C88 /* KTSelectionView.m in Sources */,
 				B23C89171BECC51800006C88 /* main.m in Sources */,
 				B23C89121BECC51800006C88 /* KTAlbumCell.m in Sources */,

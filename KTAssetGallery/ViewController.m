@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "UIViewController+KTAssertGallery.h"
+#import "UIViewController+KTAssetGallery.h"
 #import "KTImagePickerController.h"
 
 @interface ViewController ()
