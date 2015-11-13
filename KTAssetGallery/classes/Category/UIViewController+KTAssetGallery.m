@@ -28,14 +28,14 @@
                     hasSelected:(NSArray<id<KTAssetProtocol>> *) hasSelected
                      whenSelect:(void (^)(id<KTAssetProtocol> asset)) selectionBlock
                        deSelect:(void (^)(id<KTAssetProtocol> asset)) deSelectionBlock
-                   tapToPreviewVideo:(void (^)(id<KTAssetProtocol> asset)) tapToPreviewVideoBlock
+              tapToPreviewVideo:(void (^)(id<KTAssetProtocol> asset)) tapToPreviewVideoBlock
                          cancel:(void (^)(NSArray<id<KTAssetProtocol>> *assets)) cancelBlock
                          finish:(void (^)(NSArray<id<KTAssetProtocol>> *assets)) finishBlock{
     
     KTImagePickerController *vc = [KTImagePickerController imagePickerControllerWithHasSelected:hasSelected
                                                                                      whenSelect:selectionBlock
                                                                                        deSelect:deSelectionBlock
-                                                                                    tapToPreview:tapToPreviewVideoBlock
+                                                                                   tapToPreview:tapToPreviewVideoBlock
                                                                                          cancel:^(NSArray<id<KTAssetProtocol>> *assets) {
                                                                                              if (hideBlock) {
                                                                                                  hideBlock(self.kt_vc);
@@ -72,28 +72,67 @@
     }];
 }
 
+
+-(void)kt_assetPickerCustomShow:(void (^)(UIViewController *vc)) showBlock
+                           hide:(void (^)(UIViewController *vc)) hideBlock
+                      mediaType:(KTAssetMediaType)mediaType
+                       settings:(KTImagePickerSettings *) settings
+                    hasSelected:(NSArray<id<KTAssetProtocol>> *) hasSelected
+              tapToPreviewVideo:(void (^)(id<KTAssetProtocol> asset)) tapToPreviewVideoBlock
+                         cancel:(void (^)(NSArray<id<KTAssetProtocol>> *assets)) cancelBlock
+                         finish:(void (^)(NSArray<id<KTAssetProtocol>> *assets)) finishBlock{
+    [self kt_assetPickerCustomShow:showBlock hide:hideBlock mediaType:mediaType settings:settings hasSelected:hasSelected whenSelect:nil deSelect:nil tapToPreviewVideo:tapToPreviewVideoBlock cancel:cancelBlock finish:finishBlock];
+}
+
+-(void)kt_assetPickerCustomShow:(void (^)(UIViewController *vc)) showBlock
+                           hide:(void (^)(UIViewController *vc)) hideBlock
+                      mediaType:(KTAssetMediaType)mediaType
+                       settings:(KTImagePickerSettings *) settings
+                    hasSelected:(NSArray<id<KTAssetProtocol>> *) hasSelected
+                         cancel:(void (^)(NSArray<id<KTAssetProtocol>> *assets)) cancelBlock
+                         finish:(void (^)(NSArray<id<KTAssetProtocol>> *assets)) finishBlock{
+    [self kt_assetPickerCustomShow:showBlock hide:hideBlock mediaType:mediaType settings:settings hasSelected:hasSelected tapToPreviewVideo:nil cancel:cancelBlock finish:finishBlock];
+}
+
+-(void)kt_assetPickerCustomShow:(void (^)(UIViewController *vc)) showBlock
+                           hide:(void (^)(UIViewController *vc)) hideBlock
+                      mediaType:(KTAssetMediaType)mediaType
+                       settings:(KTImagePickerSettings *) settings
+                    hasSelected:(NSArray<id<KTAssetProtocol>> *) hasSelected
+                         finish:(void (^)(NSArray<id<KTAssetProtocol>> *assets)) finishBlock{
+    [self kt_assetPickerCustomShow:showBlock hide:hideBlock mediaType:mediaType settings:settings hasSelected:hasSelected cancel:nil finish:finishBlock];
+}
+
+-(void)kt_assetPickerCustomShow:(void (^)(UIViewController *vc)) showBlock
+                           hide:(void (^)(UIViewController *vc)) hideBlock
+                      mediaType:(KTAssetMediaType)mediaType
+                    hasSelected:(NSArray<id<KTAssetProtocol>> *) hasSelected
+                         finish:(void (^)(NSArray<id<KTAssetProtocol>> *assets)) finishBlock{
+    [self kt_assetPickerCustomShow:showBlock hide:hideBlock mediaType:mediaType settings:nil hasSelected:hasSelected cancel:nil finish:finishBlock];
+}
+
 -(void)kt_assetPickerShowWithMediaType:(KTAssetMediaType)mediaType
                               settings:(KTImagePickerSettings *) settings
                            hasSelected:(NSArray<id<KTAssetProtocol>> *) hasSelected
                             whenSelect:(void (^)(id<KTAssetProtocol> asset)) selectionBlock
                               deSelect:(void (^)(id<KTAssetProtocol> asset)) deSelectionBlock
-                          tapToPreviewVideo:(void (^)(id<KTAssetProtocol> asset)) tapToPreviewVideoBlock
+                     tapToPreviewVideo:(void (^)(id<KTAssetProtocol> asset)) tapToPreviewVideoBlock
                                 cancel:(void (^)(NSArray<id<KTAssetProtocol>> *assets)) cancelBlock
                                 finish:(void (^)(NSArray<id<KTAssetProtocol>> *assets)) finishBlock
                               complete:(void (^)())complete{
     KTImagePickerController *vc = [KTImagePickerController imagePickerControllerWithHasSelected:hasSelected
                                                                                      whenSelect:selectionBlock
                                                                                        deSelect:deSelectionBlock
-                                                                                    tapToPreview:tapToPreviewVideoBlock
+                                                                                   tapToPreview:tapToPreviewVideoBlock
                                                                                          cancel:^(NSArray<id<KTAssetProtocol>> *assets) {
-                                                                                            
+                                                                                             
                                                                                              [self dismissViewControllerAnimated:YES completion:nil];
                                                                                              
                                                                                              if (cancelBlock) {
                                                                                                  cancelBlock(assets);
                                                                                              }
                                                                                          } finish:^(NSArray<id<KTAssetProtocol>> *assets) {
-                                                                                              [self dismissViewControllerAnimated:YES completion:nil];
+                                                                                             [self dismissViewControllerAnimated:YES completion:nil];
                                                                                              
                                                                                              if (finishBlock) {
                                                                                                  finishBlock(assets);
@@ -113,6 +152,42 @@
         self.kt_vc = vc;
         [self presentViewController:vc animated:YES completion:complete];
     }];
- 
+    
+}
+
+-(void)kt_assetPickerShowWithMediaType:(KTAssetMediaType)mediaType
+                              settings:(KTImagePickerSettings *) settings
+                           hasSelected:(NSArray<id<KTAssetProtocol>> *) hasSelected
+                     tapToPreviewVideo:(void (^)(id<KTAssetProtocol> asset)) tapToPreviewVideoBlock
+                                cancel:(void (^)(NSArray<id<KTAssetProtocol>> *assets)) cancelBlock
+                                finish:(void (^)(NSArray<id<KTAssetProtocol>> *assets)) finishBlock
+                              complete:(void (^)())complete{
+    [self kt_assetPickerShowWithMediaType:mediaType settings:settings hasSelected:hasSelected whenSelect:nil
+                                 deSelect:nil tapToPreviewVideo:tapToPreviewVideoBlock cancel:cancelBlock finish:finishBlock complete:complete];
+}
+
+-(void)kt_assetPickerShowWithMediaType:(KTAssetMediaType)mediaType
+                              settings:(KTImagePickerSettings *) settings
+                           hasSelected:(NSArray<id<KTAssetProtocol>> *) hasSelected
+                                cancel:(void (^)(NSArray<id<KTAssetProtocol>> *assets)) cancelBlock
+                                finish:(void (^)(NSArray<id<KTAssetProtocol>> *assets)) finishBlock
+                              complete:(void (^)())complete{
+    
+    [self kt_assetPickerShowWithMediaType:mediaType settings:settings hasSelected:hasSelected tapToPreviewVideo:nil cancel:cancelBlock finish:finishBlock complete:complete];
+}
+
+-(void)kt_assetPickerShowWithMediaType:(KTAssetMediaType)mediaType
+                              settings:(KTImagePickerSettings *) settings
+                           hasSelected:(NSArray<id<KTAssetProtocol>> *) hasSelected
+                                finish:(void (^)(NSArray<id<KTAssetProtocol>> *assets)) finishBlock
+                              complete:(void (^)())complete{
+    [self kt_assetPickerShowWithMediaType:mediaType settings:settings hasSelected:hasSelected cancel:nil finish:finishBlock complete:complete];
+}
+
+-(void)kt_assetPickerShowWithMediaType:(KTAssetMediaType)mediaType
+                           hasSelected:(NSArray<id<KTAssetProtocol>> *) hasSelected
+                                finish:(void (^)(NSArray<id<KTAssetProtocol>> *assets)) finishBlock
+                              complete:(void (^)())complete{
+    [self kt_assetPickerShowWithMediaType:mediaType hasSelected:hasSelected finish:finishBlock complete:complete];
 }
 @end
